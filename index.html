@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Your Home Health Website — 15 Design Studies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,560;1,9..144,340&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FAF6F0;--ink:#22201C;--soft:#6E675C;--line:#E4DCD0;--terra:#B4552D;--sage:#5F7A61}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Karla',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;background:
+    radial-gradient(500px 340px at 8% 4%, rgba(95,122,97,.10), transparent 70%),
+    radial-gradient(560px 380px at 94% 10%, rgba(180,85,45,.08), transparent 70%)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;position:relative}
+  header{padding:78px 0 36px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  h1{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(34px,5.6vw,58px);line-height:1.06;margin:16px 0 18px;max-width:14ch}
+  h1 em{font-style:italic;color:var(--sage)}
+  .sub{max-width:560px;color:var(--soft);font-size:17px}
+  .sub b{color:var(--ink)}
+  .note{margin-top:12px;font-size:13.5px;color:#98907F;max-width:560px}
+  ol.list{list-style:none;counter-reset:opt;padding:26px 0 70px}
+  ol.list li{counter-increment:opt;border-bottom:1px solid var(--line)}
+  ol.list a{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:baseline;padding:22px 6px;text-decoration:none;color:var(--ink);transition:background .18s,padding-left .18s}
+  ol.list a:hover,ol.list a:focus-visible{background:#F3EDE2;padding-left:14px}
+  ol.list a:focus-visible{outline:2px solid var(--terra);outline-offset:-2px}
+  .no{font-family:'Fraunces',serif;font-size:15px;color:#A99F8D}
+  .no::before{content:counter(opt,decimal-leading-zero)}
+  .name{font-family:'Fraunces',serif;font-size:clamp(19px,2.6vw,26px);font-weight:560}
+  .desc{grid-column:2;color:var(--soft);font-size:14.5px;margin-top:2px;max-width:52ch}
+  .go{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);white-space:nowrap}
+  footer{border-top:1px solid var(--line);padding:22px 0 44px;font-size:13px;color:#98907F}
+  @media(max-width:560px){ header{padding:56px 0 28px} ol.list a{grid-template-columns:44px 1fr;} .go{display:none} }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <span class="eyebrow">Design Studies · For Your Review</span>
+  <h1>Fifteen ways your <em>home health</em> site could feel.</h1>
+  <p class="sub">Each study was designed like it came from a <b>different studio</b> — its own layout, typography, motion and voice. Tap any one to open the full page on your phone or computer.</p>
+  <p class="note">"HarborLight Home Care," the phone number, photos and testimonials are stand-ins — your real name, branding and content replace them.</p>
+</div></header>
+<main class="wrap">
+  <ol class="list" id="list"></ol>
+</main>
+<footer><div class="wrap">Prepared for Kelly · Oakville, CT — private preview, not a live business site.</div></footer>
+<script>
+const opts=[
+["Swiss Precision","White space, a strict grid, one red accent — care presented with total clarity."],
+["Editorial Warmth","A magazine profile of your business: cream paper, serif storytelling, terracotta."],
+["Botanical Line","Hand-drawn stems and leaves, arched photos, sage & ivory calm."],
+["Dusk Gradient","Deep plum and amber evening light with soft glass panels."],
+["Quiet Luxury","Charcoal, champagne and restraint — private-client discretion."],
+["Neo-Brutal Soft","Thick borders, sticker badges, big friendly type. Confident and neighborly."],
+["Bento Studio","A modern tile system where every tile does something different."],
+["Storybook","The page reads as chapters, following one family's day with a caregiver."],
+["Aurora Glass","Frosted glass floating over a soft aurora sky. Light and optimistic."],
+["Craft Paper","Kraft texture, stitched borders, polaroid frames — handmade sincerity."],
+["Coastal Modern","Harbor blues on a horizon line. Very Connecticut."],
+["Pop Community","Pinned notes, tape corners, handwritten arrows — bulletin-board joy."],
+["Clinical Modern","Enterprise-healthcare polish with a capability matrix and clean data."],
+["Soft Depth","Cushioned, tactile surfaces — care that feels like a deep breath."],
+["Ink & Ivory","A gallery exhibition in near-black and ivory. Every sentence earns its place."]
+];
+document.getElementById('list').innerHTML=opts.map((o,i)=>`<li><a href="option${i+1}.html"><span class="no"></span><span class="name">${o[0]}</span><span class="go">Open →</span><span class="desc">${o[1]}</span></a></li>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!-- THEME: "Neo-Brutal Soft" — Agency build: friendly brutalism. Off-white paper, thick 2–3px ink borders,
+     hard offset shadows, chunky rounded buttons, oversized Space Grotesk headlines, rotated sticker badges,
+     SVG marker-squiggle underlines, cobalt + warm yellow accents. Cards tilt straight on hover. Motion: snappy
+     150ms pops + counter tick-ups (JS-gated, degrades fully; reduced-motion honored). Voice: plainspoken neighborly. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HarborLight Home Care — Compassionate In-Home Care in Oakville, CT</title>
+<meta name="description" content="Real help at home from real neighbors. HarborLight Home Care serves Oakville, Watertown, Waterbury and Litchfield County. Licensed, insured, bonded. Call (860) 555-0100 for a free home visit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf6ee; --paper-2:#f2ecdf; --ink:#20201c; --ink-soft:#54524a;
+  --cobalt:#2545d3; --cobalt-deep:#1c37ab; --yellow:#ffc933; --yellow-soft:#ffe08a;
+  --card:#fffdf7;
+  --bord:2.5px solid var(--ink);
+  --pop:150ms cubic-bezier(.34,1.4,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:'Space Grotesk',system-ui,sans-serif;font-size:16.5px;line-height:1.6;color:var(--ink);
+  background:var(--paper);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(rgba(32,32,28,.13) 1px,transparent 1px);background-size:26px 26px}
+a{color:inherit}
+h1,h2,h3{line-height:1.08;font-weight:700;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+::selection{background:var(--yellow);color:var(--ink)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+
+/* ===== Nav: chunky bordered bar ===== */
+header.topbar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--bord)}
+.topbar-in{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px clamp(18px,4vw,40px)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-box{width:42px;height:42px;flex:0 0 42px;border:var(--bord);border-radius:12px;background:var(--yellow);display:grid;place-items:center;
+  box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg)}
+.logo-name{font-weight:700;font-size:18px;letter-spacing:-.01em}
+.logo-name span{display:block;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt)}
+.top-links{display:flex;gap:6px;margin-left:auto}
+.top-links a{text-decoration:none;font-weight:600;font-size:14.5px;padding:9px 14px;border:2.5px solid transparent;border-radius:999px;transition:border-color var(--pop),background var(--pop),transform var(--pop)}
+.top-links a:hover{border-color:var(--ink);background:var(--card);transform:translateY(-1px)}
+.top-call{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14.5px;
+  padding:11px 18px;border:var(--bord);border-radius:999px;background:var(--yellow);
+  box-shadow:3px 3px 0 var(--ink);transition:transform var(--pop),box-shadow var(--pop);white-space:nowrap}
+.top-call:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.top-call:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+@media(max-width:980px){.top-links{display:none}}
+@media(max-width:640px){.top-call{display:none}.topbar-in{justify-content:space-between}}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:inherit;font-weight:700;font-size:16.5px;
+  padding:16px 28px;border:var(--bord);border-radius:18px;cursor:pointer;
+  transition:transform var(--pop),box-shadow var(--pop)}
+.btn-cobalt{background:var(--cobalt);color:#fff;box-shadow:5px 5px 0 var(--ink)}
+.btn-cobalt:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn-cobalt:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn-paper{background:var(--card);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-paper:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn-paper:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-yellow:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn-yellow:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+
+/* ===== Stickers & squiggle ===== */
+.sticker{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.02em;padding:8px 16px;border:var(--bord);border-radius:999px;
+  box-shadow:3px 3px 0 var(--ink);transform:rotate(-3deg)}
+.sticker.s-yellow{background:var(--yellow)}
+.sticker.s-cobalt{background:var(--cobalt);color:#fff;transform:rotate(2.5deg)}
+.sticker.s-paper{background:var(--card);transform:rotate(-2deg)}
+.squig{position:relative;white-space:nowrap}
+.squig svg{position:absolute;left:0;right:0;bottom:-.18em;width:100%;height:.32em;overflow:visible}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt);
+  border:2px solid var(--cobalt);border-radius:999px;padding:6px 14px;background:var(--card)}
+
+/* ===== Hero ===== */
+.hero{padding:clamp(48px,8vh,96px) 0 clamp(56px,8vh,96px);position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(30px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,76px);margin:22px 0 20px}
+.hero h1 .hl{background:linear-gradient(0deg,var(--yellow-soft) 42%,transparent 42%)}
+.hero-sub{font-size:clamp(17px,1.5vw,20px);color:var(--ink-soft);max-width:50ch;margin-bottom:30px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:30px}
+.hero-checks{display:flex;flex-direction:column;gap:9px}
+.hero-checks span{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.check-dot{width:24px;height:24px;flex:0 0 24px;border:2.5px solid var(--ink);border-radius:8px;background:var(--yellow);display:grid;place-items:center}
+.hero-photo-wrap{position:relative}
+.hero-photo{border:var(--bord);border-radius:26px;box-shadow:9px 9px 0 var(--ink);overflow:hidden;
+  background:#d8cdb8 url('https://images.unsplash.com/photo-1773227054096-2857c73ef2da?auto=format&fit=crop&w=1600&q=80') center/cover;
+  aspect-ratio:4/4.6;transform:rotate(1.6deg);transition:transform var(--pop)}
+.hero-photo-wrap:hover .hero-photo{transform:rotate(0)}
+.hero-st-1{position:absolute;top:-16px;left:-14px;z-index:2}
+.hero-st-2{position:absolute;bottom:22px;right:-10px;z-index:2}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-photo{aspect-ratio:4/3;max-height:380px;width:100%}}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(28px,8.2vw,34px)}
+  .squig{white-space:normal}
+  .hero-st-1{left:2px;top:-14px}
+  .hero-st-2{right:2px}
+  .sticker{font-size:12px;padding:7px 13px}
+  .head h2{font-size:clamp(26px,7.4vw,30px)}
+  .cz-copy h2{font-size:clamp(26px,7.4vw,30px)}
+}
+
+/* ===== Marquee-ish town strip ===== */
+.strip{border-top:var(--bord);border-bottom:var(--bord);background:var(--cobalt);color:#fff;overflow:hidden;padding:13px 0}
+.strip-in{display:flex;gap:44px;white-space:nowrap;font-weight:700;letter-spacing:.06em;font-size:15px;width:max-content;animation:slide 26s linear infinite}
+.strip-in span{display:inline-flex;align-items:center;gap:14px}
+.strip-in .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);display:inline-block}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.strip-in{animation:none}}
+
+/* ===== Counters ===== */
+.counts{padding:clamp(52px,7vh,84px) 0 0}
+.counts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.count{border:var(--bord);border-radius:20px;background:var(--card);box-shadow:5px 5px 0 var(--ink);padding:24px 20px;text-align:center;
+  transform:rotate(-1.2deg);transition:transform var(--pop)}
+.count:nth-child(2n){transform:rotate(1.2deg)}
+.count:hover{transform:rotate(0) translateY(-3px)}
+.count b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:700;color:var(--cobalt);letter-spacing:-.02em}
+.count span{font-size:13.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:840px){.counts-grid{grid-template-columns:1fr 1fr}}
+
+/* ===== Section heads ===== */
+section{position:relative}
+.pad{padding:clamp(60px,9vh,110px) 0}
+.head{max-width:700px;margin-bottom:clamp(32px,5vh,52px)}
+.head h2{font-size:clamp(30px,4.4vw,52px);margin:18px 0 14px}
+.head p{color:var(--ink-soft);font-size:17.5px}
+
+/* ===== Services: tilted cards ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.svc{border:var(--bord);border-radius:20px;background:var(--card);box-shadow:5px 5px 0 var(--ink);
+  padding:24px 20px 22px;position:relative;transition:transform var(--pop),box-shadow var(--pop)}
+.svc:nth-child(odd){transform:rotate(-1.4deg)}
+.svc:nth-child(even){transform:rotate(1.3deg)}
+.svc:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.svc-num{position:absolute;top:-13px;right:14px;font-size:12.5px;font-weight:700;background:var(--yellow);border:2px solid var(--ink);
+  border-radius:999px;padding:3px 11px;box-shadow:2px 2px 0 var(--ink)}
+.svc-ic{width:46px;height:46px;border:2.5px solid var(--ink);border-radius:14px;display:grid;place-items:center;margin-bottom:14px;background:var(--paper-2)}
+.svc:nth-child(3n) .svc-ic{background:var(--yellow-soft)}
+.svc:nth-child(3n+1) .svc-ic{background:#dbe2ff}
+.svc h3{font-size:17.5px;margin-bottom:8px}
+.svc p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+@media(max-width:1020px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}.svc:nth-child(n){transform:rotate(0)}}
+
+/* ===== Steps ===== */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.stepbox{border:var(--bord);border-radius:20px;background:var(--card);box-shadow:5px 5px 0 var(--ink);padding:26px 22px;position:relative}
+.stepbox .big-n{font-size:44px;font-weight:700;color:var(--cobalt);display:block;line-height:1;margin-bottom:12px}
+.stepbox:nth-child(2) .big-n,.stepbox:nth-child(4) .big-n{color:var(--ink);-webkit-text-stroke:0}
+.stepbox h3{font-size:17.5px;margin-bottom:8px}
+.stepbox p{font-size:14.5px;color:var(--ink-soft)}
+.stepbox::after{content:"";position:absolute;top:50%;right:-22px;width:24px;border-top:3px dashed var(--ink);opacity:.5}
+.stepbox:last-child::after{display:none}
+@media(max-width:1020px){.steps-grid{grid-template-columns:1fr 1fr}.stepbox:nth-child(2)::after{display:none}}
+@media(max-width:560px){.steps-grid{grid-template-columns:1fr}.stepbox::after{display:none}}
+
+/* ===== Photo duo band ===== */
+.duo{display:grid;grid-template-columns:5fr 4fr;gap:clamp(24px,4vw,48px);align-items:center}
+.duo-photos{position:relative;min-height:420px}
+.dp{position:absolute;border:var(--bord);border-radius:22px;box-shadow:7px 7px 0 var(--ink);background-size:cover;background-position:center}
+.dp-1{width:66%;aspect-ratio:4/3.4;top:0;left:0;transform:rotate(-2.4deg);background-color:#cfc4ae;
+  background-image:url('https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?auto=format&fit=crop&w=1600&q=80')}
+.dp-2{width:52%;aspect-ratio:4/3.8;bottom:0;right:0;transform:rotate(2.8deg);background-color:#c9bfa9;
+  background-image:url('https://images.unsplash.com/photo-1575467678930-c7acd65d6470?auto=format&fit=crop&w=1600&q=80')}
+.duo-st{position:absolute;top:38%;right:4%;z-index:2}
+.duo-copy h2{font-size:clamp(30px,4vw,48px);margin:18px 0 16px}
+.duo-copy p{color:var(--ink-soft);margin-bottom:14px}
+.duo-list{margin-top:20px;display:grid;gap:11px}
+.duo-list span{display:flex;gap:11px;align-items:flex-start;font-weight:600;font-size:15.5px}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.duo-photos{min-height:340px;order:2}}
+
+/* ===== Testimonials: speech bubbles ===== */
+.bubbles{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.bubble{position:relative}
+.bub-card{border:var(--bord);border-radius:22px;background:var(--card);box-shadow:6px 6px 0 var(--ink);padding:24px 22px;
+  font-size:15.5px;line-height:1.6;position:relative;transform:rotate(-.8deg);transition:transform var(--pop)}
+.bubble:nth-child(2) .bub-card{transform:rotate(.9deg);background:var(--yellow-soft)}
+.bubble:hover .bub-card{transform:rotate(0)}
+.bub-card::after{content:"";position:absolute;left:34px;bottom:-16px;width:24px;height:24px;background:inherit;
+  border-right:var(--bord);border-bottom:var(--bord);transform:rotate(45deg) skew(8deg,8deg);border-radius:0 0 6px 0}
+.bub-who{margin-top:26px;padding-left:12px;font-weight:700;font-size:14px}
+.bub-who small{display:block;font-weight:500;color:var(--ink-soft);font-size:13px}
+.bub-who .sam{color:var(--cobalt);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:900px){.bubbles{grid-template-columns:1fr;max-width:520px}}
+
+/* ===== FAQ ===== */
+.faq-zone{max-width:780px}
+details.f{border:var(--bord);border-radius:18px;background:var(--card);box-shadow:4px 4px 0 var(--ink);margin-bottom:16px;overflow:hidden}
+details.f summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:19px 22px;font-weight:700;font-size:17px;min-height:44px;transition:background var(--pop)}
+details.f summary::-webkit-details-marker{display:none}
+details.f summary:hover{background:var(--paper-2)}
+details.f[open] summary{border-bottom:2.5px dashed var(--ink);background:var(--yellow-soft)}
+.f-plus{width:32px;height:32px;flex:0 0 32px;border:2.5px solid var(--ink);border-radius:10px;background:var(--yellow);
+  display:grid;place-items:center;font-size:19px;font-weight:700;line-height:1;transition:transform var(--pop)}
+details.f[open] .f-plus{transform:rotate(45deg);background:var(--cobalt);color:#fff}
+.f-body{padding:18px 22px 22px;color:var(--ink-soft);font-size:15.5px;max-width:62ch}
+
+/* ===== Contact ===== */
+.contact-zone{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,64px);align-items:start}
+.cz-copy h2{font-size:clamp(30px,4.2vw,50px);margin:18px 0 16px}
+.cz-copy p{color:var(--ink-soft);margin-bottom:22px}
+.cz-call{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:clamp(20px,2.4vw,26px);
+  border:var(--bord);border-radius:18px;background:var(--yellow);box-shadow:5px 5px 0 var(--ink);padding:16px 24px;
+  transition:transform var(--pop),box-shadow var(--pop)}
+.cz-call:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.cz-note{margin-top:22px;font-size:14.5px;color:var(--ink-soft);display:flex;gap:10px;align-items:flex-start}
+form.bru-form{border:var(--bord);border-radius:24px;background:var(--card);box-shadow:8px 8px 0 var(--ink);padding:clamp(24px,3.4vw,40px)}
+.bf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bf{margin-bottom:16px}
+.bf label{display:block;font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-bottom:7px}
+.bf input,.bf select,.bf textarea{width:100%;padding:13px 15px;font:inherit;font-size:15.5px;color:var(--ink);
+  background:var(--paper);border:2.5px solid var(--ink);border-radius:13px;transition:box-shadow var(--pop),transform var(--pop)}
+.bf input:focus,.bf select:focus,.bf textarea:focus{outline:none;box-shadow:3px 3px 0 var(--cobalt);transform:translate(-1px,-1px)}
+.bf select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1.5 1.5L7 7l5.5-5.5' stroke='%2320201c' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+.bf textarea{min-height:104px;resize:vertical}
+.bf-fine{font-size:13px;color:var(--ink-soft);margin-top:12px}
+@media(max-width:920px){.contact-zone{grid-template-columns:1fr}}
+@media(max-width:560px){.bf-row{grid-template-columns:1fr}}
+
+/* ===== Footer ===== */
+footer{border-top:var(--bord);background:var(--paper-2);padding:36px 0 116px;margin-top:clamp(50px,7vh,90px)}
+.foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;font-size:14px}
+.foot b{font-weight:700}
+.foot .mini{color:var(--ink-soft)}
+@media(min-width:768px){footer{padding-bottom:36px}}
+
+/* ===== Mobile bar ===== */
+.mobile-bar{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.mb{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;text-decoration:none;font-weight:700;font-size:15px;
+  border:var(--bord);border-radius:16px;box-shadow:4px 4px 0 var(--ink)}
+.mb-call{background:var(--card)}
+.mb-go{background:var(--yellow)}
+@media(min-width:768px){.mobile-bar{display:none}}
+
+/* ===== Pop-in reveals (JS-gated) ===== */
+.js [data-pop]{opacity:0;transform:translateY(16px) scale(.97)}
+.js [data-pop].go{opacity:1;transform:none;transition:opacity .3s cubic-bezier(.34,1.4,.64,1),transform .3s cubic-bezier(.34,1.4,.64,1)}
+@media(prefers-reduced-motion:reduce){.js [data-pop]{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="#top" aria-label="HarborLight Home Care — home">
+      <span class="logo-box" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/><path d="M12 19v-5"/></svg>
+      </span>
+      <span class="logo-name">HarborLight<span>Home Care · Oakville CT</span></span>
+    </a>
+    <nav class="top-links" aria-label="Main navigation">
+      <a href="#help">What we do</a>
+      <a href="#how">How it works</a>
+      <a href="#neighbors">Neighbors</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="top-call" href="tel:+18605550100">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      (860) 555-0100
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1 · HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag" data-pop>Home care, minus the runaround</span>
+      <h1 data-pop>Good help at home, from folks who <span class="squig">actually live here<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 Q 14 2, 27 8 T 52 8 T 77 9 T 102 7 T 127 9 T 152 7 T 177 9 T 198 7" fill="none" stroke="#2545d3" stroke-width="4.5" stroke-linecap="round"/></svg></span>.</h1>
+      <p class="hero-sub" data-pop>We're HarborLight — a new, locally owned home care company in Oakville, CT. We help your mom stay in her own kitchen, your dad keep his own routine, and you finally get some sleep. That's the whole pitch.</p>
+      <div class="hero-btns" data-pop>
+        <a class="btn btn-cobalt" href="#contact">Get your free home visit
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-paper" href="#help">See what we do</a>
+      </div>
+      <div class="hero-checks" data-pop>
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>Licensed, insured &amp; bonded — the boring stuff, handled</span>
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>Every caregiver background-checked, no exceptions</span>
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>A few hours a week or 24/7 — your call</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap" data-pop>
+      <span class="sticker s-yellow hero-st-1">Locally Owned!</span>
+      <div class="hero-photo" role="img" aria-label="A happy older couple waving hello"></div>
+      <span class="sticker s-cobalt hero-st-2">Since Day One</span>
+    </div>
+  </div>
+</section>
+
+<!-- town strip -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-in">
+    <span>OAKVILLE <i class="dot"></i></span><span>WATERTOWN <i class="dot"></i></span><span>WATERBURY <i class="dot"></i></span><span>LITCHFIELD COUNTY <i class="dot"></i></span><span>FREE HOME VISITS <i class="dot"></i></span><span>ONE NUMBER TO CALL <i class="dot"></i></span>
+    <span>OAKVILLE <i class="dot"></i></span><span>WATERTOWN <i class="dot"></i></span><span>WATERBURY <i class="dot"></i></span><span>LITCHFIELD COUNTY <i class="dot"></i></span><span>FREE HOME VISITS <i class="dot"></i></span><span>ONE NUMBER TO CALL <i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- 2 · COUNTERS -->
+<section class="counts" aria-label="Quick numbers">
+  <div class="wrap counts-grid">
+    <div class="count" data-pop><b><span class="tick" data-count="8">8</span></b><span>Ways we help</span></div>
+    <div class="count" data-pop><b><span class="tick" data-count="4">4</span>+</b><span>Towns we cover</span></div>
+    <div class="count" data-pop><b><span class="tick" data-count="24">24</span>/7</b><span>Care available</span></div>
+    <div class="count" data-pop><b><span class="tick" data-count="1">1</span></b><span>Number to call</span></div>
+  </div>
+</section>
+
+<!-- 3 · SERVICES -->
+<section id="help" class="pad">
+  <div class="wrap">
+    <div class="head" data-pop>
+      <span class="tag">The full toolbox</span>
+      <h2>Eight things we're <span class="squig">genuinely good at<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 16 3, 30 9 T 58 8 T 86 9 T 114 7 T 142 9 T 170 7 T 198 9" fill="none" stroke="#ffc933" stroke-width="5" stroke-linecap="round"/></svg></span></h2>
+      <p>Pick one, pick a few, or tell us "not sure yet" — that's a perfectly good answer too.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc" data-pop>
+        <span class="svc-num">01</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.5-3-8-6.2-8-10a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 3.8-3.5 7-8 10z"/></svg></div>
+        <h3>Personal Care</h3>
+        <p>Bathing, grooming, getting dressed, getting around the house safely. Handled kindly, never rushed.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">02</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h13v9H8l-5 4V6z"/><path d="M16 9h5v7l-3-2h-2"/></svg></div>
+        <h3>Companionship</h3>
+        <p>Coffee, cards, old stories, new jokes. Somebody who shows up because they like showing up.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">03</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h16v2a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-2z"/><path d="M9 7c0-1.3 1-1.5 1-2.7M14 7c0-1.3 1-1.5 1-2.7"/></svg></div>
+        <h3>Homemaking &amp; Meals</h3>
+        <p>Tidy rooms, fresh laundry, real cooked meals. The house feels like itself again.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">04</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h3"/></svg></div>
+        <h3>Medication Reminders</h3>
+        <p>Right pill, right time, every time. We keep the schedule so nobody has to worry about it.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">05</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12a6 6 0 1 1 12 0v5H6v-5z"/><path d="M9 20h6M4 12h2M18 12h2M12 3v2"/></svg></div>
+        <h3>Respite Care</h3>
+        <p>You've been the caregiver for months. Take the weekend. We've got it from here — honest.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">06</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16l1.6-6a2 2 0 0 1 2-1.5h8.8a2 2 0 0 1 2 1.5L20 16"/><rect x="3" y="16" width="18" height="4" rx="1.4"/><circle cx="7.5" cy="20" r="1.4"/><circle cx="16.5" cy="20" r="1.4"/></svg></div>
+        <h3>Rides &amp; Errands</h3>
+        <p>Doctor's office, pharmacy, grocery run, Sunday service. Door to door with a steady arm.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">07</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 1 1 10.5 6 6.8 6.8 0 0 0 20 15.5z"/></svg></div>
+        <h3>24-Hour &amp; Live-In</h3>
+        <p>Overnights, around-the-clock shifts, or a live-in caregiver. Nobody's ever alone at 3 a.m.</p>
+      </article>
+      <article class="svc" data-pop>
+        <span class="svc-num">08</span>
+        <div class="svc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h4l2-5 3 9 2-4h5"/><path d="M4 20h16"/></svg></div>
+        <h3>Post-Hospital Recovery</h3>
+        <p>Home from the hospital? We handle the discharge list, the follow-ups, and the healing part.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · HOW IT WORKS -->
+<section id="how" class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="head" data-pop>
+      <span class="tag">No mystery here</span>
+      <h2>Four steps. Zero fine print.</h2>
+      <p>From "we should call somebody" to "why didn't we do this sooner" — here's the route.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="stepbox" data-pop>
+        <span class="big-n">1</span>
+        <h3>We come say hi</h3>
+        <p>A free visit at your kitchen table. We listen, take notes, and answer everything. No clipboard hard-sell, ever.</p>
+      </div>
+      <div class="stepbox" data-pop>
+        <span class="big-n">2</span>
+        <h3>We write the plan</h3>
+        <p>A care plan built around real routines — the morning coffee, the 2 p.m. stories, the pills at eight. You approve every bit.</p>
+      </div>
+      <div class="stepbox" data-pop>
+        <span class="big-n">3</span>
+        <h3>We match the person</h3>
+        <p>Background-checked and hand-picked to actually get along with your family. Wrong fit? We swap, no hard feelings.</p>
+      </div>
+      <div class="stepbox" data-pop>
+        <span class="big-n">4</span>
+        <h3>We stay on it</h3>
+        <p>Supervisors check in, plans get tuned up, and you get honest updates. You'll never wonder how Mom's doing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · LOCAL DUO -->
+<section id="local" class="pad" style="padding-top:0">
+  <div class="wrap duo">
+    <div class="duo-copy" data-pop>
+      <span class="tag">Why local matters</span>
+      <h2>Small on purpose. Close by design.</h2>
+      <p>Big agencies route your call through three states. We're new and we're small — which means the owner knows every client's name, every caregiver's schedule, and every shortcut to your street.</p>
+      <p>One point of contact. One phone number. When you call, a neighbor answers.</p>
+      <div class="duo-list">
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>Serving Oakville, Watertown, Waterbury &amp; Litchfield County</span>
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>Flexible: a few hours a week up to full 24/7 coverage</span>
+        <span><span class="check-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#20201c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span>Licensed, insured &amp; bonded from day one</span>
+      </div>
+    </div>
+    <div class="duo-photos" data-pop>
+      <div class="dp dp-1" role="img" aria-label="A caregiver coloring at the table with an older couple"></div>
+      <div class="dp dp-2" role="img" aria-label="Hands washing fresh carrots at the kitchen sink"></div>
+      <span class="sticker s-paper duo-st">Your street? Probably!</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · NEIGHBORS SAY -->
+<section id="neighbors" class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="head" data-pop>
+      <span class="tag">Word of mouth</span>
+      <h2>What the neighbors say</h2>
+    </div>
+    <div class="bubbles">
+      <figure class="bubble" data-pop>
+        <blockquote class="bub-card">"I called on a Tuesday, they visited Wednesday, and by Friday Mom had a caregiver she now calls 'my friend Rose.' I didn't know it could be this easy."</blockquote>
+        <figcaption class="bub-who">Daughter of a client<small>Watertown</small><span class="sam">(sample)</span></figcaption>
+      </figure>
+      <figure class="bubble" data-pop>
+        <blockquote class="bub-card">"Dad's a tough customer — hates fuss, hates strangers. They matched him with a guy who talks Red Sox and fixes his toast just right. Dad approves. That's a miracle."</blockquote>
+        <figcaption class="bub-who">Son of a client<small>Oakville</small><span class="sam">(sample)</span></figcaption>
+      </figure>
+      <figure class="bubble" data-pop>
+        <blockquote class="bub-card">"After my hip surgery they ran the whole show — meds, meals, the follow-up rides. My kids stopped panicking. I healed at home, in my own chair, like a person."</blockquote>
+        <figcaption class="bub-who">Client<small>Waterbury</small><span class="sam">(sample)</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · FAQ -->
+<section id="faq" class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="head" data-pop>
+      <span class="tag">Straight answers</span>
+      <h2>Things people ask us</h2>
+    </div>
+    <div class="faq-zone">
+      <details class="f" data-pop>
+        <summary>What's this going to cost? Does insurance cover it?<span class="f-plus" aria-hidden="true">+</span></summary>
+        <p class="f-body">Depends on how many hours you need — that's the honest answer, and we'll put an exact number in writing after your free visit. No surprise fees, no padding. And yes: many long-term care insurance policies cover home care like ours. Bring us your policy and we'll help you read the fine print and file the paperwork.</p>
+      </details>
+      <details class="f" data-pop>
+        <summary>Who exactly is coming into my parents' house?<span class="f-plus" aria-hidden="true">+</span></summary>
+        <p class="f-body">Somebody we'd trust in our own parents' house. Every caregiver passes a full background check, reference checks, and a face-to-face interview before they meet a single client. Then we keep supervising — spot checks, check-ins, the works. And you meet them before care ever starts.</p>
+      </details>
+      <details class="f" data-pop>
+        <summary>What if our needs change next month?<span class="f-plus" aria-hidden="true">+</span></summary>
+        <p class="f-body">Then the plan changes next month. Start with four hours on Tuesdays, ramp up to overnights, scale back after recovery — whatever life throws. One phone call to your coordinator and it's sorted. No contracts trapping you into hours you don't need.</p>
+      </details>
+      <details class="f" data-pop>
+        <summary>Do you cover my town?<span class="f-plus" aria-hidden="true">+</span></summary>
+        <p class="f-body">We serve Oakville, Watertown, Waterbury and the Litchfield County towns around them. We keep the map small on purpose — it's how caregivers show up on time and supervisors actually supervise. On the edge? Call us. We'll tell you straight, and point you somewhere good if we can't help.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · CONTACT -->
+<section id="contact" class="pad" style="padding-top:0">
+  <div class="wrap contact-zone">
+    <div class="cz-copy" data-pop>
+      <span class="tag">Free home visit</span>
+      <h2>Let's talk it over at <span class="squig">your kitchen table<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 16 3, 30 9 T 58 8 T 86 9 T 114 7 T 142 9 T 170 7 T 198 9" fill="none" stroke="#2545d3" stroke-width="4.5" stroke-linecap="round"/></svg></span></h2>
+      <p>Fill this out (or just call — we're phone people) and we'll set up a free, no-pressure home visit. We listen, you decide. That's it.</p>
+      <a class="cz-call" href="tel:+18605550100">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        (860) 555-0100
+      </a>
+      <p class="cz-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2545d3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5l3 2"/></svg>
+        We answer fast — usually same day, always within one business day.
+      </p>
+    </div>
+    <form class="bru-form" name="harborlight-brutal" method="POST" data-netlify="true" data-pop>
+      <input type="hidden" name="form-name" value="harborlight-brutal">
+      <div class="bf-row">
+        <div class="bf"><label for="b-name">Your name</label><input id="b-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="bf"><label for="b-phone">Phone</label><input id="b-phone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="bf"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="bf"><label for="b-svc">What kind of help?</label>
+        <select id="b-svc" name="service" required>
+          <option value="" disabled selected>Pick one (or "not sure")</option>
+          <option>Personal Care</option>
+          <option>Companionship</option>
+          <option>Homemaking &amp; Meals</option>
+          <option>Medication Reminders</option>
+          <option>Respite for Family Caregivers</option>
+          <option>Transportation &amp; Errands</option>
+          <option>24-Hour &amp; Live-In Care</option>
+          <option>Recovery &amp; Post-Hospital Support</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="bf"><label for="b-msg">Tell us what's going on</label><textarea id="b-msg" name="message" placeholder="No wrong answers. Just tell us about your family."></textarea></div>
+      <button class="btn btn-cobalt" type="submit" style="width:100%;justify-content:center">Book my free visit</button>
+      <p class="bf-fine">We'll never share your info or bug you with spam. Neighbors don't do that.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span><b>© 2026 HarborLight Home Care</b> · Licensed · Insured · Bonded</span>
+    <span class="mini">Oakville · Watertown · Waterbury · Litchfield County</span>
+    <a class="top-call" href="tel:+18605550100" style="display:inline-flex">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      (860) 555-0100
+    </a>
+  </div>
+</footer>
+
+<nav class="mobile-bar" aria-label="Quick actions">
+  <a class="mb mb-call" href="tel:+18605550100" aria-label="Call HarborLight Home Care at (860) 555-0100">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    Call
+  </a>
+  <a class="mb mb-go" href="#contact">Free home visit</a>
+</nav>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pops=document.querySelectorAll('[data-pop]');
+  if(reduce||!('IntersectionObserver' in window)){
+    pops.forEach(function(e){e.classList.add('go')});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var el=en.target,sibs=el.parentElement?el.parentElement.querySelectorAll(':scope > [data-pop]'):[];
+          var idx=Array.prototype.indexOf.call(sibs,el);
+          el.style.transitionDelay=(idx>0?Math.min(idx*60,360):0)+'ms';
+          el.classList.add('go');io.unobserve(el);
+        }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+    pops.forEach(function(e){io.observe(e)});
+    window.addEventListener('load',function(){
+      setTimeout(function(){pops.forEach(function(e){if(!e.classList.contains('go')){var r=e.getBoundingClientRect();if(r.top<window.innerHeight)e.classList.add('go');}})},900);
+    });
+  }
+  /* counter tick-ups — text already correct without JS */
+  var ticks=document.querySelectorAll('.tick');
+  if(!reduce&&'IntersectionObserver' in window&&ticks.length){
+    var tio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var el=en.target,target=parseInt(el.getAttribute('data-count'),10)||0;
+        tio.unobserve(el);
+        var start=null,dur=700;
+        function frame(ts){
+          if(!start)start=ts;
+          var p=Math.min((ts-start)/dur,1);
+          el.textContent=Math.round(target*(1-Math.pow(1-p,3)));
+          if(p<1)requestAnimationFrame(frame);else el.textContent=target;
+        }
+        requestAnimationFrame(frame);
+      });
+    },{threshold:.6});
+    ticks.forEach(function(t){tio.observe(t)});
+  }
+})();
+</script>
+</body>
+</html>

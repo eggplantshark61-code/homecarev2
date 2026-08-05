@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- THEME: "Botanical Line" — organic elegance. Ivory, sage and moss; Cormorant Garamond display with Nunito Sans body. Hand-drawn inline SVG botanical line illustrations (stems, leaves, small blossoms at 1.5px stroke) woven between sections and behind headings; arched photo masks; asymmetric organic layout with curved SVG section dividers. Motion: SVG line-draw on scroll via stroke-dashoffset (visible fallback), soft reveals. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HarborLight Home Care — Compassionate In-Home Care in Oakville, CT</title>
+<meta name="description" content="HarborLight Home Care tends to life at home in Oakville, Watertown, Waterbury and Litchfield County, CT — personal care, companionship, homemaking, 24-hour support. Begin with a free in-home assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#F8F6EF;
+  --ivory-2:#F1EFE3;
+  --sage:#DDE4D2;
+  --sage-2:#C6D1B8;
+  --moss:#44573C;
+  --moss-deep:#2F3E2A;
+  --leaf:#6B7F5E;
+  --blossom:#C08968;
+  --ink:#2E332B;
+  --soft:#5D6355;
+  --hair:rgba(68,87,60,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Nunito Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.75;color:var(--ink);
+  background:var(--ivory);
+  background-image:
+    radial-gradient(900px 480px at 92% -4%, rgba(198,209,184,.4), transparent 62%),
+    radial-gradient(760px 520px at -8% 44%, rgba(221,228,210,.55), transparent 58%),
+    radial-gradient(700px 460px at 104% 82%, rgba(192,137,104,.10), transparent 60%);
+  overflow-x:hidden;
+}
+::selection{background:var(--moss);color:var(--ivory)}
+h1,h2,h3,.disp{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;color:var(--moss-deep);line-height:1.08}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--leaf)}
+.shell{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4.5vw,60px);position:relative}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--moss);outline-offset:3px;border-radius:6px}
+/* botanicals */
+.bot-svg{stroke:var(--leaf);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.bot-svg .bl{stroke:var(--blossom)}
+.bot-svg .faint{opacity:.55}
+.behind{position:absolute;z-index:0;pointer-events:none}
+/* line-draw: JS sets dasharray/offset; CSS only transitions */
+.js-draw .draw{transition:stroke-dashoffset 1.6s cubic-bezier(.45,.05,.35,1)}
+/* ---------- nav : floating garden gate ---------- */
+.gate{
+  position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:90;width:min(1080px,calc(100% - 24px));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(248,246,239,.92);backdrop-filter:blur(8px);
+  border:1px solid var(--hair);border-radius:999px;padding:10px 12px 10px 20px;
+  box-shadow:0 14px 40px -20px rgba(47,62,42,.35);
+}
+.gate .wm{display:flex;align-items:center;gap:10px;text-decoration:none}
+.gate .wm svg{width:30px;height:30px}
+.gate .wm b{font-family:'Cormorant Garamond';font-weight:600;font-size:21px;color:var(--moss-deep);letter-spacing:.01em}
+.gate .wm b i{font-style:italic;font-weight:500;color:var(--leaf)}
+.gate ul{display:none;list-style:none;gap:2px}
+.gate ul a{
+  display:block;padding:9px 15px;border-radius:999px;text-decoration:none;color:var(--ink);
+  font-size:13.5px;font-weight:600;transition:background .3s ease,color .3s ease;
+}
+.gate ul a:hover{background:var(--sage);color:var(--moss-deep)}
+@media(min-width:1020px){.gate ul{display:flex}}
+.gate .call{
+  display:none;align-items:center;gap:8px;text-decoration:none;background:var(--moss);color:var(--ivory);
+  font-size:13.5px;font-weight:700;padding:11px 20px;border-radius:999px;transition:background .3s ease,transform .3s ease;
+}
+.gate .call:hover{background:var(--moss-deep);transform:translateY(-1px)}
+.gate .call svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
+@media(min-width:768px){.gate .call{display:inline-flex}}
+.gate .menu-b{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--hair);background:transparent;cursor:pointer}
+.gate .menu-b svg{width:18px;height:18px;stroke:var(--moss-deep);stroke-width:1.5;stroke-linecap:round}
+@media(min-width:1020px){.gate .menu-b{display:none}}
+.veil{
+  position:fixed;inset:0;z-index:85;background:var(--moss-deep);color:var(--ivory);
+  padding:110px 28px 40px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;
+}
+.veil.open{opacity:1;visibility:visible}
+.veil a{display:block;text-decoration:none;color:var(--ivory);font-family:'Cormorant Garamond';font-size:clamp(30px,8vw,44px);font-weight:500;padding:10px 0;border-bottom:1px solid rgba(248,246,239,.18)}
+.veil a span{font-family:'Nunito Sans';font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-2);display:block}
+.veil a:hover{color:var(--sage-2)}
+body.held{overflow:hidden}
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(120px,16vw,180px) 0 clamp(30px,5vw,60px)}
+.hero .lay{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+@media(min-width:960px){.hero .lay{grid-template-columns:6.5fr 5fr;gap:56px}}
+.hero h1{font-size:clamp(42px,7vw,84px);font-weight:500;letter-spacing:-.01em;position:relative;z-index:1}
+.hero h1 em{font-style:italic;color:var(--leaf)}
+.hero .lede{margin-top:24px;max-width:54ch;color:var(--soft);font-size:17.5px}
+.hero .lede strong{color:var(--ink)}
+.hero .roots{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.pill{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;border-radius:999px;
+  font-size:14px;font-weight:700;padding:16px 28px;transition:transform .3s ease,background .3s ease,box-shadow .3s ease;
+}
+.pill svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pill.solid{background:var(--moss);color:var(--ivory);box-shadow:0 14px 30px -14px rgba(47,62,42,.55)}
+.pill.solid:hover{background:var(--moss-deep);transform:translateY(-2px)}
+.pill.line{border:1.5px solid var(--moss);color:var(--moss-deep)}
+.pill.line:hover{background:var(--sage);transform:translateY(-2px)}
+.hero .towns{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--soft)}
+.hero .towns span{display:inline-flex;align-items:center;gap:7px}
+.hero .towns svg{width:12px;height:12px;stroke:var(--blossom);fill:none;stroke-width:1.5;stroke-linecap:round}
+/* arch photos */
+.arch{
+  position:relative;background:#c9cbb8 center/cover no-repeat;overflow:hidden;
+  border-radius:220px 220px 26px 26px;box-shadow:0 30px 70px -30px rgba(47,62,42,.45);
+}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(107,127,94,.06),rgba(47,62,42,.16));pointer-events:none}
+.arch.ring{border:8px solid var(--ivory);outline:1.5px solid var(--hair)}
+.hero .arch-duo{position:relative;z-index:1}
+.hero .arch-duo .a{aspect-ratio:4/5;background-image:url('https://images.unsplash.com/photo-1758874960180-996bc2523a37?auto=format&fit=crop&w=1600&q=80')}
+.hero .arch-duo .b{
+  position:absolute;width:44%;aspect-ratio:3/4;right:0;bottom:-9%;
+  border-radius:160px 160px 20px 20px;
+  background-image:url('https://images.unsplash.com/photo-1616286608358-0e1b143f7d2f?auto=format&fit=crop&w=1600&q=80');
+}
+@media(min-width:960px){.hero .arch-duo .b{right:-6%;bottom:-12%}}
+.hero .sprig-tl{top:6px;left:-30px;width:150px;opacity:.8}
+/* curved divider */
+.curve{display:block;width:100%;height:70px}
+@media(min-width:900px){.curve{height:110px}}
+/* ---------- tending (philosophy) ---------- */
+.tend{background:var(--sage);position:relative}
+.tend .shell{padding-top:clamp(30px,5vw,50px);padding-bottom:clamp(56px,8vw,90px)}
+.tend .lay{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:940px){.tend .lay{grid-template-columns:5fr 6fr;gap:70px}}
+.tend h2{font-size:clamp(32px,4.6vw,54px)}
+.tend h2 em{font-style:italic;color:var(--leaf)}
+.tend p.big{font-family:'Cormorant Garamond';font-size:clamp(19px,2.4vw,24px);font-style:italic;color:var(--moss-deep);margin:18px 0 14px;line-height:1.4}
+.tend p{color:#42493c;max-width:54ch}
+.tend .arch-s{aspect-ratio:4/5;max-width:440px;background-image:url('https://images.unsplash.com/photo-1758691031818-02a1e7d90aff?auto=format&fit=crop&w=1600&q=80')}
+.tend .vows{margin-top:26px;display:grid;gap:12px}
+.tend .vows li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--moss-deep)}
+.tend .vows svg{width:20px;height:20px;flex:none;margin-top:4px}
+/* ---------- garden of services ---------- */
+.garden{position:relative;padding:clamp(60px,9vw,110px) 0 clamp(40px,7vw,80px)}
+.garden .head{max-width:640px;margin:0 auto;text-align:center;position:relative}
+.garden .head h2{font-size:clamp(34px,5vw,58px)}
+.garden .head h2 em{font-style:italic;color:var(--leaf)}
+.garden .head p{color:var(--soft);margin-top:14px}
+.garden .head .under{width:190px;margin:18px auto 0;display:block}
+.beds{display:grid;grid-template-columns:1fr;gap:22px;margin-top:clamp(36px,6vw,60px)}
+@media(min-width:680px){.beds{grid-template-columns:1fr 1fr}}
+@media(min-width:1020px){.beds{grid-template-columns:repeat(4,1fr)}.beds .bed:nth-child(even){transform:translateY(26px)}}
+.bed{
+  background:#FDFCF7;border:1px solid var(--hair);border-radius:150px 150px 22px 22px;
+  padding:44px 24px 30px;text-align:center;position:relative;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+}
+.bed:hover{transform:translateY(-6px)!important;box-shadow:0 26px 50px -30px rgba(47,62,42,.4);border-color:var(--sage-2)}
+@media(min-width:1020px){.beds .bed:nth-child(even):hover{transform:translateY(20px)}}
+.bed .sp{width:54px;height:54px;margin:0 auto 16px;display:block}
+.bed h3{font-size:24px;font-weight:600}
+.bed p{font-size:14.5px;color:var(--soft);margin-top:10px}
+.bed .num{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond';font-style:italic;font-size:15px;color:var(--blossom)}
+/* ---------- the seasons (process path) ---------- */
+.seasons{background:var(--ivory-2);position:relative}
+.seasons .shell{padding-top:clamp(24px,4vw,40px);padding-bottom:clamp(64px,9vw,100px)}
+.seasons .head{text-align:center;max-width:620px;margin:0 auto}
+.seasons .head h2{font-size:clamp(32px,4.8vw,54px)}
+.seasons .head h2 em{font-style:italic;color:var(--leaf)}
+.seasons .head p{color:var(--soft);margin-top:12px}
+.path{position:relative;max-width:860px;margin:clamp(36px,6vw,54px) auto 0}
+.path .stem-line{position:absolute;left:26px;top:8px;bottom:8px;width:2px;display:none}
+@media(min-width:760px){.path .stem-line{display:block;left:50%;margin-left:-1px}}
+.path .stem-line svg{height:100%;width:2px}
+.stage{display:grid;grid-template-columns:56px 1fr;gap:18px;margin-bottom:38px;position:relative}
+@media(min-width:760px){
+  .stage{grid-template-columns:1fr 120px 1fr;gap:0;align-items:center}
+  .stage .node{grid-column:2;justify-self:center}
+  .stage .txt{grid-column:3;padding-left:10px}
+  .stage.flip .txt{grid-column:1;grid-row:1;text-align:right;padding-left:0;padding-right:10px}
+}
+.stage .node{
+  width:56px;height:56px;border-radius:50%;background:#FDFCF7;border:1.5px solid var(--sage-2);
+  display:flex;align-items:center;justify-content:center;z-index:1;
+  box-shadow:0 10px 24px -12px rgba(47,62,42,.35);
+}
+.stage .node svg{width:26px;height:26px}
+.stage h3{font-size:25px;font-weight:600}
+.stage h3 i{font-style:italic;font-size:16px;color:var(--blossom);margin-right:8px}
+.stage p{color:var(--soft);font-size:15.5px;max-width:42ch;margin-top:6px}
+.stage.flip p{margin-left:auto}
+@media(max-width:759px){.stage.flip p{margin-left:0}}
+/* ---------- kind words ---------- */
+.kind{padding:clamp(64px,9vw,110px) 0 clamp(30px,5vw,60px);position:relative}
+.kind .lay{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media(min-width:960px){.kind .lay{grid-template-columns:5fr 7fr;gap:64px}}
+.kind .arch-k{aspect-ratio:3/4;max-width:400px;background-image:url('https://images.unsplash.com/photo-1773227054096-2857c73ef2da?auto=format&fit=crop&w=1600&q=80')}
+.kind h2{font-size:clamp(32px,4.8vw,54px)}
+.kind h2 em{font-style:italic;color:var(--leaf)}
+.kwrap{margin-top:26px;display:grid;gap:18px}
+.kq{
+  background:#FDFCF7;border:1px solid var(--hair);border-radius:22px;padding:26px 28px;position:relative;
+}
+.kq::before{content:"";position:absolute;left:28px;top:-9px;width:46px;height:18px;background:var(--ivory) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 18'%3E%3Cpath d='M2 16C10 6 16 4 23 9s14 5 21-5' fill='none' stroke='%236B7F5E' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.kq p{font-family:'Cormorant Garamond';font-style:italic;font-size:20.5px;line-height:1.5;color:var(--moss-deep)}
+.kq footer{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.kq footer b{color:var(--blossom)}
+/* ---------- roots (faq) ---------- */
+.roots-sec{background:var(--sage);position:relative}
+.roots-sec .shell{padding-top:clamp(28px,4vw,44px);padding-bottom:clamp(64px,9vw,100px)}
+.roots-sec .lay{display:grid;grid-template-columns:1fr;gap:36px}
+@media(min-width:960px){.roots-sec .lay{grid-template-columns:4fr 7fr;gap:70px}}
+.roots-sec h2{font-size:clamp(32px,4.8vw,54px)}
+.roots-sec h2 em{font-style:italic;color:var(--leaf)}
+.roots-sec .side p{color:#42493c;margin-top:14px;max-width:40ch}
+.roots-sec .side .sprig-side{width:120px;margin-top:22px;opacity:.85}
+.fold details{background:#FDFCF7;border:1px solid var(--hair);border-radius:18px;margin-bottom:14px;overflow:hidden;transition:box-shadow .3s ease}
+.fold details[open]{box-shadow:0 18px 40px -28px rgba(47,62,42,.4)}
+.fold summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 22px;min-height:44px;
+  font-family:'Cormorant Garamond';font-size:21px;font-weight:600;color:var(--moss-deep);
+}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary .leafmark{flex:none;width:26px;height:26px;transition:transform .35s ease}
+.fold details[open] summary .leafmark{transform:rotate(90deg)}
+.fold .ans{padding:0 22px 22px 64px;color:var(--soft);font-size:15.5px}
+.fold .ans a{color:var(--moss);font-weight:700}
+/* ---------- plant a seed (contact) ---------- */
+.seed{position:relative;padding:clamp(64px,9vw,110px) 0 clamp(70px,10vw,120px)}
+.seed .card{
+  background:#FDFCF7;border:1px solid var(--hair);border-radius:34px;
+  box-shadow:0 40px 90px -50px rgba(47,62,42,.5);
+  display:grid;grid-template-columns:1fr;overflow:hidden;position:relative;
+}
+@media(min-width:960px){.seed .card{grid-template-columns:5fr 6fr}}
+.seed .intro{background:var(--moss-deep);color:var(--ivory);padding:clamp(34px,5vw,54px);position:relative;overflow:hidden}
+.seed .intro .eyebrow{color:var(--sage-2)}
+.seed .intro h2{color:var(--ivory);font-size:clamp(30px,4.2vw,46px);margin-top:12px}
+.seed .intro h2 em{font-style:italic;color:var(--sage-2)}
+.seed .intro p{color:rgba(248,246,239,.8);margin-top:16px;font-size:16px;max-width:42ch}
+.seed .intro .lines{margin-top:26px;display:grid;gap:12px;font-size:15px}
+.seed .intro .lines div{display:flex;gap:12px;align-items:baseline}
+.seed .intro .lines b{font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--sage-2);min-width:82px}
+.seed .intro .lines a{color:var(--ivory);text-decoration:none;font-family:'Cormorant Garamond';font-size:20px;font-weight:600}
+.seed .intro .bloom-bg{position:absolute;right:-30px;bottom:-24px;width:190px;opacity:.35}
+.seed form{padding:clamp(30px,5vw,50px);display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:640px){.seed form{grid-template-columns:1fr 1fr}.sf-full{grid-column:1/-1}}
+.sf label{display:block;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--leaf);margin-bottom:7px}
+.sf input,.sf select,.sf textarea{
+  width:100%;background:var(--ivory);border:1.5px solid var(--hair);border-radius:14px;
+  font-family:'Nunito Sans';font-size:16px;color:var(--ink);padding:13px 16px;
+  transition:border-color .3s ease,box-shadow .3s ease;
+}
+.sf input:focus,.sf select:focus,.sf textarea:focus{border-color:var(--moss);box-shadow:0 0 0 4px rgba(107,127,94,.15)}
+.sf textarea{min-height:110px;resize:vertical}
+.sf select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2344573C' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer}
+.seed form button{
+  grid-column:1/-1;justify-self:start;cursor:pointer;border:0;background:var(--moss);color:var(--ivory);
+  font-family:'Nunito Sans';font-size:14.5px;font-weight:700;padding:17px 32px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:10px;transition:background .3s ease,transform .3s ease;
+  box-shadow:0 16px 34px -16px rgba(47,62,42,.6);
+}
+.seed form button:hover{background:var(--moss-deep);transform:translateY(-2px)}
+.seed form button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round}
+.seed form .fine{grid-column:1/-1;font-size:13px;color:var(--soft);font-style:italic}
+/* ---------- footer ---------- */
+.grove{background:var(--moss-deep);color:rgba(248,246,239,.75);position:relative}
+.grove .shell{padding-top:40px;padding-bottom:104px;text-align:center}
+@media(min-width:768px){.grove .shell{padding-bottom:44px}}
+.grove .wm{font-family:'Cormorant Garamond';font-weight:600;font-size:26px;color:var(--ivory)}
+.grove .wm i{font-style:italic;color:var(--sage-2)}
+.grove .sep{width:170px;margin:16px auto;opacity:.7}
+.grove nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;margin:8px 0 16px}
+.grove nav a{color:rgba(248,246,239,.75);text-decoration:none;font-size:13px;font-weight:600}
+.grove nav a:hover{color:var(--sage-2)}
+.grove p{font-size:13px;letter-spacing:.04em}
+.grove p b{color:var(--ivory);font-weight:600}
+/* ---------- mobile bar ---------- */
+.mbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:95;display:grid;grid-template-columns:1fr 1fr;gap:0;
+  background:rgba(47,62,42,.98);padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top-left-radius:22px;border-top-right-radius:22px;
+}
+.mbar a{
+  display:flex;align-items:center;justify-content:center;gap:9px;min-height:48px;margin:0 4px;border-radius:999px;
+  text-decoration:none;font-size:13px;font-weight:700;
+}
+.mbar a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.mbar .c1{color:var(--ivory);border:1.5px solid rgba(248,246,239,.4)}
+.mbar .c2{background:var(--sage-2);color:var(--moss-deep)}
+@media(min-width:768px){.mbar{display:none}}
+/* ---------- reveals ---------- */
+.js .soft{opacity:0;transform:translateY(22px)}
+.js .soft.bloomed{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.22,.8,.36,1)}
+.js .soft.s2.bloomed{transition-delay:.12s}.js .soft.s3.bloomed{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .js .soft{opacity:1;transform:none;transition:none}
+  .js-draw .draw{transition:none;stroke-dashoffset:0!important;stroke-dasharray:none!important}
+  *{transition-duration:.01ms!important;animation:none!important}
+}
+</style>
+</head>
+<body id="top">
+<a href="#hero" style="position:absolute;left:-9999px;top:0;background:#2F3E2A;color:#F8F6EF;padding:10px 16px;z-index:99" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
+
+<header class="gate" aria-label="Site header">
+  <a class="wm" href="#top">
+    <svg class="bot-svg" viewBox="0 0 32 32" aria-hidden="true">
+      <path class="draw" d="M16 28C16 20 16 12 16 6"/>
+      <path class="draw" d="M16 12c-4-1-7-4-7.5-8 4.5.5 7 3.5 7.5 8z"/>
+      <path class="draw" d="M16 18c4-1 7-4 7.5-8-4.5.5-7 3.5-7.5 8z"/>
+      <circle class="bl draw" cx="16" cy="5" r="2.2"/>
+    </svg>
+    <b>Harbor<i>light</i></b>
+  </a>
+  <ul>
+    <li><a href="#tending">Our Way</a></li>
+    <li><a href="#garden">Services</a></li>
+    <li><a href="#seasons">How It Works</a></li>
+    <li><a href="#kind">Kind Words</a></li>
+    <li><a href="#roots">Questions</a></li>
+  </ul>
+  <a class="call" href="tel:+18605550100">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    (860) 555-0100
+  </a>
+  <button class="menu-b" id="menuB" aria-label="Open menu" aria-expanded="false" aria-controls="veil">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h16M4 16h10"/></svg>
+  </button>
+</header>
+
+<nav class="veil" id="veil" aria-label="Mobile menu">
+  <a href="#tending"><span>01</span>Our Way</a>
+  <a href="#garden"><span>02</span>Services</a>
+  <a href="#seasons"><span>03</span>How It Works</a>
+  <a href="#kind"><span>04</span>Kind Words</a>
+  <a href="#roots"><span>05</span>Questions</a>
+  <a href="#seed"><span>06</span>Begin</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="shell">
+    <svg class="behind" style="top:84px;left:-26px;width:150px;opacity:.75" viewBox="0 0 150 190" aria-hidden="true">
+      <g class="bot-svg">
+        <path class="draw" d="M30 186C36 130 50 80 88 34"/>
+        <path class="draw" d="M52 120c-16-4-26-14-28-30 16 2 26 12 28 30z"/>
+        <path class="draw" d="M66 84c14-8 18-20 15-36-13 7-18 20-15 36z"/>
+        <path class="draw bl" d="M88 34c-6-6-6-14 0-19 6 5 6 13 0 19z"/>
+        <path class="draw bl" d="M88 34c6-6 14-6 19 0-5 6-13 6-19 0z"/>
+        <path class="draw bl" d="M88 34c6 6 6 14 0 19-6-5-6-13 0-19z"/>
+        <path class="draw bl" d="M88 34c-6 6-14 6-19 0 5-6 13-6 19 0z"/>
+      </g>
+    </svg>
+    <div class="lay">
+      <div class="soft">
+        <span class="eyebrow">In-home care · Oakville, Connecticut</span>
+        <h1>Let life keep <em>blooming</em> at home.</h1>
+        <p class="lede"><strong>HarborLight Home Care is a new, locally-rooted home care company</strong> tending to elders and recovering neighbors across Oakville, Watertown, Waterbury and Litchfield County — with patience, warmth, and a caregiver chosen just for you.</p>
+        <div class="roots">
+          <a class="pill solid" href="#seed">Begin with a free home visit
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="pill line" href="#garden">Wander the services</a>
+        </div>
+        <div class="towns" aria-label="Service area">
+          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4"/></svg>Oakville</span>
+          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4"/></svg>Watertown</span>
+          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4"/></svg>Waterbury</span>
+          <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4"/></svg>Litchfield County</span>
+        </div>
+      </div>
+      <div class="arch-duo soft s2">
+        <div class="arch ring a" role="img" aria-label="A grandmother and granddaughter smiling together"></div>
+        <div class="arch ring b" role="img" aria-label="A senior woman in a cardigan, at ease at home"></div>
+      </div>
+    </div>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,70 C240,110 480,20 760,44 C1040,68 1240,96 1440,52 L1440,110 L0,110 Z" fill="var(--sage)"/>
+  </svg>
+</section>
+
+<!-- TENDING / OUR WAY -->
+<section class="tend" id="tending">
+  <div class="shell">
+    <div class="lay">
+      <div class="soft"><div class="arch arch-s ring" role="img" aria-label="A couple smiling together on their couch at home"></div></div>
+      <div class="soft s2">
+        <span class="eyebrow">Our way of caring</span>
+        <h2>Care, the way a garden is <em>tended.</em></h2>
+        <p class="big">Not rushed. Not loud. Just faithfully, season after season, with hands that know what they’re doing.</p>
+        <p>We are small on purpose and local by conviction. Every caregiver is background-checked and hand-chosen; every family keeps one point of contact who knows their story; and every plan bends gently — from a few hours a week to full 24/7 and live-in care.</p>
+        <ul class="vows">
+          <li><svg class="bot-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="draw" d="M10 17V6"/><path class="draw" d="M10 10C7 9 5 7 4.6 4c3 .4 5 2.4 5.4 6z"/><path class="draw" d="M10 13c3-1 5-3 5.4-6-3 .4-5 2.4-5.4 6z"/></svg>Licensed · Insured · Bonded (placeholder)</li>
+          <li><svg class="bot-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="draw" d="M10 17V6"/><path class="draw" d="M10 10C7 9 5 7 4.6 4c3 .4 5 2.4 5.4 6z"/><path class="draw" d="M10 13c3-1 5-3 5.4-6-3 .4-5 2.4-5.4 6z"/></svg>Background-checked, owner-interviewed caregivers</li>
+          <li><svg class="bot-svg" viewBox="0 0 20 20" aria-hidden="true"><path class="draw" d="M10 17V6"/><path class="draw" d="M10 10C7 9 5 7 4.6 4c3 .4 5 2.4 5.4 6z"/><path class="draw" d="M10 13c3-1 5-3 5.4-6-3 .4-5 2.4-5.4 6z"/></svg>One familiar voice whenever you call</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 110" preserveAspectRatio="none" style="display:block" aria-hidden="true">
+    <path d="M0,64 C300,20 560,104 860,72 C1120,44 1300,28 1440,64 L1440,110 L0,110 Z" fill="var(--ivory)"/>
+  </svg>
+</section>
+
+<!-- GARDEN OF SERVICES -->
+<section class="garden" id="garden">
+  <div class="shell">
+    <div class="head soft">
+      <span class="eyebrow">Eight kinds of help</span>
+      <h2>The garden of <em>services</em></h2>
+      <p>Pick one, or let us gather a small bouquet — most families blend two or three.</p>
+      <svg class="under" viewBox="0 0 190 26" aria-hidden="true">
+        <g class="bot-svg"><path class="draw" d="M6 16C40 6 70 22 95 14s55-10 89 2"/><path class="draw faint" d="M60 14c-3-5-3-8 1-11M132 15c3-5 3-8-1-11"/><circle class="bl draw" cx="95" cy="13" r="2.4"/></g>
+      </svg>
+    </div>
+    <div class="beds">
+      <article class="bed soft"><span class="num">i.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M27 46V16"/><path class="draw" d="M27 28c-7-2-11-7-12-14 7 1 11 6 12 14z"/><path class="draw" d="M27 34c7-2 11-7 12-14-7 1-11 6-12 14z"/><circle class="bl draw" cx="27" cy="12" r="3.4"/></svg>
+        <h3>Personal Care</h3><p>Bathing, grooming, dressing and steady arms for safe mobility — offered gently, received with dignity.</p>
+      </article>
+      <article class="bed soft s2"><span class="num">ii.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M14 44c0-8 5-13 13-13s13 5 13 13"/><circle class="draw" cx="27" cy="20" r="7"/><path class="draw bl" d="M42 14c2-2 5-2 7 0-2 2-5 2-7 0zM5 14c2-2 5-2 7 0-2 2-5 2-7 0z"/></svg>
+        <h3>Companionship</h3><p>Conversation, card games, slow walks and shared laughter — the medicine no pharmacy carries.</p>
+      </article>
+      <article class="bed soft"><span class="num">iii.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M9 26l18-14 18 14"/><path class="draw" d="M13 24v18h28V24"/><path class="draw bl" d="M27 42v-8c0-3 2-5 5-5"/></svg>
+        <h3>Homemaking &amp; Meals</h3><p>Fresh laundry, tidy rooms, and honest meals from your own kitchen, seasoned to memory.</p>
+      </article>
+      <article class="bed soft s2"><span class="num">iv.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><circle class="draw" cx="27" cy="27" r="16"/><path class="draw" d="M27 17v10l7 5"/><path class="draw bl" d="M27 6v-3M27 51v-3"/></svg>
+        <h3>Medication Reminders</h3><p>Kind, punctual prompts that keep every prescription blooming on the doctor’s schedule.</p>
+      </article>
+      <article class="bed soft"><span class="num">v.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M27 44C17 37 10 30 10 22a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 8-7 15-17 22z"/><path class="draw bl" d="M22 22c2-3 8-3 10 0"/></svg>
+        <h3>Respite for Family Caregivers</h3><p>Rest for the one who never rests. Step away for an afternoon or a week — we’ll keep watch.</p>
+      </article>
+      <article class="bed soft s2"><span class="num">vi.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M8 34l6-12h26l6 12v8H8v-8z"/><circle class="draw" cx="16" cy="42" r="4"/><circle class="draw" cx="38" cy="42" r="4"/><path class="draw bl" d="M20 28h14"/></svg>
+        <h3>Transportation &amp; Errands</h3><p>Appointments, groceries, the pharmacy and church — door to door, with good company for the ride.</p>
+      </article>
+      <article class="bed soft"><span class="num">vii.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M40 32a14 14 0 1 1-12-22c-3 4-3 10 1 14s10 5 14 2c0 2-1 4-3 6z"/><path class="draw bl" d="M40 12l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z"/></svg>
+        <h3>24-Hour &amp; Live-In Care</h3><p>A calm, attentive presence through every hour — daylight, dusk, and the deep of night.</p>
+      </article>
+      <article class="bed soft s2"><span class="num">viii.</span>
+        <svg class="sp bot-svg" viewBox="0 0 54 54" aria-hidden="true"><path class="draw" d="M27 46c0-12 0-20 0-26"/><path class="draw" d="M27 30c-6-1-10-5-11-12 6 1 10 5 11 12z"/><path class="draw" d="M27 24c6-1 10-5 11-12-6 1-10 5-11 12z"/><path class="draw bl" d="M17 46h20"/></svg>
+        <h3>Recovery &amp; Post-Hospital Support</h3><p>A soft landing after discharge — routines, reminders and rides that help strength return.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONS / PROCESS -->
+<section class="seasons" id="seasons">
+  <svg class="curve" viewBox="0 0 1440 110" preserveAspectRatio="none" style="display:block;transform:scaleY(-1)" aria-hidden="true">
+    <path d="M0,64 C300,20 560,104 860,72 C1120,44 1300,28 1440,64 L1440,110 L0,110 Z" fill="var(--ivory)"/>
+  </svg>
+  <div class="shell">
+    <div class="head soft">
+      <span class="eyebrow">From first call to full bloom</span>
+      <h2>How care takes <em>root</em></h2>
+      <p>Four gentle stages — nothing hurried, everything explained.</p>
+    </div>
+    <div class="path">
+      <div class="stem-line" aria-hidden="true">
+        <svg viewBox="0 0 2 800" preserveAspectRatio="none"><path class="draw" d="M1 0v800" stroke="var(--sage-2)" stroke-width="2" stroke-dasharray="6 8" fill="none"/></svg>
+      </div>
+      <div class="stage soft">
+        <div class="node"><svg class="bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path class="draw" d="M4 12l9-8 9 8M6 11v10h14V11"/><path class="draw bl" d="M13 21v-5"/></svg></div>
+        <div class="txt"><h3><i>First,</i>A free in-home assessment</h3><p>We visit your home, sit with your family, and listen for the details that matter — no fee, no pressure, no clipboard-coldness.</p></div>
+      </div>
+      <div class="stage flip soft">
+        <div class="node"><svg class="bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path class="draw" d="M6 3h11l4 4v16H6z"/><path class="draw" d="M10 10h7M10 14h7M10 18h4"/></svg></div>
+        <div class="txt"><h3><i>Then,</i>A personalized care plan</h3><p>Your routines, preferences and wishes, written into a clear plan you approve before a single visit begins.</p></div>
+      </div>
+      <div class="stage soft">
+        <div class="node"><svg class="bot-svg" viewBox="0 0 26 26" aria-hidden="true"><circle class="draw" cx="9" cy="9" r="4"/><circle class="draw" cx="18" cy="10" r="3"/><path class="draw" d="M3 21c.6-4 3-6 6-6s5.4 2 6 6M14.5 21c.4-3 1.8-4.6 3.5-4.6s3.1 1.6 3.5 4.6"/></svg></div>
+        <div class="txt"><h3><i>Next,</i>A carefully matched caregiver</h3><p>Skills first, spirit second — we pair each home with a caregiver who fits both, and it shows quickly.</p></div>
+      </div>
+      <div class="stage flip soft">
+        <div class="node"><svg class="bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path class="draw" d="M13 22C6 17 3 13 3 9a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-3 8-10 13z"/></svg></div>
+        <div class="txt"><h3><i>Always,</i>Supervision &amp; family updates</h3><p>We keep visiting, keep listening, and keep your whole family gently in the loop as seasons change.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KIND WORDS -->
+<section class="kind" id="kind">
+  <div class="shell">
+    <div class="lay">
+      <div class="soft"><div class="arch arch-k ring" role="img" aria-label="A senior couple waving warmly"></div></div>
+      <div class="soft s2">
+        <span class="eyebrow">Kind words</span>
+        <h2>What families tell <em>their neighbors</em></h2>
+        <div class="kwrap">
+          <blockquote class="kq">
+            <p>“Our caregiver notices things — the low mood, the skipped lunch, the loose stair rail. It feels less like a service and more like being looked after by someone who truly cares.”</p>
+            <footer>— Daughter of a client, Watertown <b>(sample)</b></footer>
+          </blockquote>
+          <blockquote class="kq">
+            <p>“I live two states away. The regular updates are my window home — I know how Mom slept, what she ate, and what made her laugh on Tuesday.”</p>
+            <footer>— Son of a client, Oakville <b>(sample)</b></footer>
+          </blockquote>
+          <blockquote class="kq">
+            <p>“They matched Dad with a caregiver who loves birds as much as he does. Whoever thought of that deserves flowers.”</p>
+            <footer>— Family caregiver, Waterbury <b>(sample)</b></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,58 C260,96 520,26 800,50 C1080,74 1260,90 1440,46 L1440,110 L0,110 Z" fill="var(--sage)"/>
+  </svg>
+</section>
+
+<!-- ROOTS / FAQ -->
+<section class="roots-sec" id="roots">
+  <div class="shell">
+    <div class="lay">
+      <div class="side soft">
+        <span class="eyebrow">Good questions</span>
+        <h2>Getting to the <em>roots</em> of it</h2>
+        <p>The questions families ask before they call — answered the way we’d want them answered ourselves.</p>
+        <svg class="sprig-side bot-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <path class="draw" d="M24 116C34 78 52 48 88 22"/>
+          <path class="draw" d="M42 84c-12-2-19-9-21-21 12 2 19 9 21 21z"/>
+          <path class="draw" d="M56 58c11-5 15-14 13-26-10 5-15 14-13 26z"/>
+          <circle class="bl draw" cx="90" cy="19" r="4"/>
+          <path class="bl draw" d="M90 11v-5M96 21h5M84 15l-4-4M96 13l4-4"/>
+        </svg>
+      </div>
+      <div class="fold soft s2">
+        <details>
+          <summary><svg class="leafmark bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 20C8 12 13 7 21 5c-1 8-6 13-15 15z"/><path d="M6 20c4-6 8-9 12-11"/></svg>What will care cost — and can insurance help?</summary>
+          <div class="ans"><p>Every plan is priced by its hours and level of help, and after your free assessment you receive the numbers in writing — nothing hidden under the leaves. Many long-term care (LTC) insurance policies reimburse care like ours, and we gladly help you review your policy and handle the claim paperwork. Standard Medicare usually does not cover non-medical home care.</p></div>
+        </details>
+        <details>
+          <summary><svg class="leafmark bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 20C8 12 13 7 21 5c-1 8-6 13-15 15z"/><path d="M6 20c4-6 8-9 12-11"/></svg>How are your caregivers chosen and screened?</summary>
+          <div class="ans"><p>Carefully, and never quickly. Each caregiver passes a thorough background check and reference verification, then meets the owner face to face. Only after that do we consider matching them to a family — and we keep supervising long after the first visit.</p></div>
+        </details>
+        <details>
+          <summary><svg class="leafmark bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 20C8 12 13 7 21 5c-1 8-6 13-15 15z"/><path d="M6 20c4-6 8-9 12-11"/></svg>Can the schedule grow or shrink with our needs?</summary>
+          <div class="ans"><p>Like anything living, yes. Start with a few hours a week; expand to overnights, weekends, or full 24-hour and live-in care whenever life asks for more. One call to <a href="tel:+18605550100">(860) 555-0100</a> reshapes the plan.</p></div>
+        </details>
+        <details>
+          <summary><svg class="leafmark bot-svg" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 20C8 12 13 7 21 5c-1 8-6 13-15 15z"/><path d="M6 20c4-6 8-9 12-11"/></svg>Which towns are within your reach?</summary>
+          <div class="ans"><p>Our roots are in Oakville, and our branches reach Watertown, Waterbury and the towns of Litchfield County. Live just beyond? Ask anyway — we answer honestly, and quickly.</p></div>
+        </details>
+      </div>
+    </div>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 110" preserveAspectRatio="none" style="display:block" aria-hidden="true">
+    <path d="M0,52 C280,92 540,30 820,56 C1100,82 1280,72 1440,40 L1440,110 L0,110 Z" fill="var(--ivory)"/>
+  </svg>
+</section>
+
+<!-- SEED / CONTACT -->
+<section class="seed" id="seed">
+  <div class="shell">
+    <div class="card soft">
+      <div class="intro">
+        <svg class="bloom-bg bot-svg" viewBox="0 0 190 190" aria-hidden="true">
+          <g stroke="rgba(248,246,239,.8)">
+            <path class="draw" d="M95 186V96"/>
+            <path class="draw" d="M95 140c-18-4-29-15-32-33 18 3 29 14 32 33z"/>
+            <path class="draw" d="M95 118c18-4 29-15 32-33-18 3-29 14-32 33z"/>
+            <path class="draw" d="M95 96c-12-10-12-26 0-36 12 10 12 26 0 36zM95 96c10-12 26-12 36 0-12 10-26 10-36 0zM95 96c-10-12-26-12-36 0 12 10 26 10 36 0z"/>
+            <circle class="draw" cx="95" cy="88" r="6"/>
+          </g>
+        </svg>
+        <span class="eyebrow">Begin here</span>
+        <h2>Plant the first <em>seed.</em></h2>
+        <p>Share a few lines about your family. We’ll call within a business day, answer every question kindly, and arrange your free in-home assessment whenever you’re ready.</p>
+        <div class="lines">
+          <div><b>Call</b><a href="tel:+18605550100">(860) 555-0100</a></div>
+          <div><b>Home</b><span>Oakville, Connecticut</span></div>
+          <div><b>Reach</b><span>Oakville · Watertown · Waterbury · Litchfield County</span></div>
+        </div>
+      </div>
+      <form name="harborlight-botanical" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="harborlight-botanical">
+        <div class="sf"><label for="s-name">Your name</label><input id="s-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="sf"><label for="s-phone">Phone</label><input id="s-phone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="sf"><label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email"></div>
+        <div class="sf"><label for="s-svc">What kind of help?</label>
+          <select id="s-svc" name="service">
+            <option>Not sure yet</option>
+            <option>Personal Care</option>
+            <option>Companionship</option>
+            <option>Homemaking &amp; Meals</option>
+            <option>Medication Reminders</option>
+            <option>Respite for Family Caregivers</option>
+            <option>Transportation &amp; Errands</option>
+            <option>24-Hour &amp; Live-In Care</option>
+            <option>Recovery &amp; Post-Hospital Support</option>
+          </select>
+        </div>
+        <div class="sf sf-full"><label for="s-msg">Tell us a little</label><textarea id="s-msg" name="message" placeholder="Who needs care, and what does a good day look like for them?"></textarea></div>
+        <button type="submit">Request the free assessment
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="fine">Everything you share stays between us, like a good neighbor’s confidence.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="grove">
+  <div class="shell">
+    <div class="wm">Harbor<i>light</i> Home Care</div>
+    <svg class="sep bot-svg" viewBox="0 0 170 22" aria-hidden="true">
+      <g stroke="rgba(198,209,184,.9)"><path class="draw" d="M4 13C34 5 60 19 85 12s56-8 81 1"/><circle class="bl draw" cx="85" cy="11" r="2.2" stroke="#C08968"/></g>
+    </svg>
+    <nav aria-label="Footer">
+      <a href="#tending">Our Way</a>
+      <a href="#garden">Services</a>
+      <a href="#seasons">How It Works</a>
+      <a href="#roots">Questions</a>
+      <a href="#seed">Begin</a>
+    </nav>
+    <p>© 2026 <b>HarborLight Home Care</b> · Licensed · Insured · Bonded</p>
+    <p>Oakville, CT · Serving Oakville, Watertown, Waterbury &amp; Litchfield County · (860) 555-0100</p>
+  </div>
+</footer>
+
+<div class="mbar" role="navigation" aria-label="Quick actions">
+  <a class="c1" href="tel:+18605550100" aria-label="Call HarborLight at (860) 555-0100">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    Call us
+  </a>
+  <a class="c2" href="#seed" aria-label="Request a free assessment">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-5-3.5-8-6.6-8-10a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 3.4-3 6.5-8 10z"/></svg>
+    Free visit
+  </a>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* mobile menu */
+  var b=document.getElementById('menuB'),veil=document.getElementById('veil');
+  function shut(){veil.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.classList.remove('held');}
+  b.addEventListener('click',function(){
+    var open=veil.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    document.body.classList.toggle('held',open);
+  });
+  veil.querySelectorAll('a').forEach(function(a){a.addEventListener('click',shut);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')shut();});
+
+  /* soft reveals */
+  var softs=document.querySelectorAll('.soft');
+  if(reduce||!('IntersectionObserver' in window)){
+    softs.forEach(function(el){el.classList.add('bloomed');});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('bloomed');io.unobserve(en.target);}});
+    },{threshold:.14,rootMargin:'0px 0px -5% 0px'});
+    softs.forEach(function(el){io.observe(el);});
+  }
+
+  /* botanical line-draw: dash states set ONLY here, so strokes stay visible without JS */
+  if(!reduce && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js-draw');
+    var paths=document.querySelectorAll('.draw');
+    paths.forEach(function(p){
+      var len;
+      try{len=p.getTotalLength();}catch(e){return;}
+      if(!len||!isFinite(len))return;
+      p.style.strokeDasharray=len+' '+len;
+      p.style.strokeDashoffset=len;
+      p.dataset.len=len;
+    });
+    var seen=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var ps=en.target.querySelectorAll('.draw');
+          ps.forEach(function(p,i){
+            setTimeout(function(){p.style.strokeDashoffset='0';},i*160);
+          });
+          seen.unobserve(en.target);
+        }
+      });
+    },{threshold:.3});
+    document.querySelectorAll('svg').forEach(function(s){
+      if(s.querySelector('.draw'))seen.observe(s);
+    });
+  }
+})();
+</script>
+</body>
+</html>

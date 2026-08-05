@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ============================================================
+  HarborLight Home Care — "Pop Community" build
+  Agency theme: joyful bulletin-board energy, professionally
+  executed. White + coral + teal + sunshine used with discipline.
+  Pinned-note cards with push-pin SVGs, tape corners, tilted
+  snapshots, hand-drawn arrows, wavy SVG dividers.
+  Type: Poppins (structure) + Caveat (handwritten annotations).
+  Motion: playful springy pops (≤300ms), wiggle-on-hover badges.
+  Copy voice: warm community-newsletter cheer, never childish.
+  ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HarborLight Home Care — Compassionate In-Home Care in Oakville, CT</title>
+<meta name="description" content="Your neighbors in home care. HarborLight serves Oakville, Watertown, Waterbury and Litchfield County with friendly, professional in-home support. (860) 555-0100.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff; --board:#fdfbf7; --coral:#f4634e; --coral-deep:#d94a36;
+  --teal:#12958d; --teal-deep:#0b6e68; --sun:#ffc63e; --sun-soft:#fff3d6;
+  --ink:#2b3440; --gray:#5d6875; --line:#e7e2d8;
+  --shadow:0 8px 24px rgba(43,52,64,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Poppins',sans-serif;font-size:16px;line-height:1.7;color:var(--ink);
+  background-color:var(--board);
+  background-image:radial-gradient(rgba(43,52,64,.055) 1.1px, transparent 1.1px);
+  background-size:26px 26px;
+}
+a{color:var(--teal-deep)}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em}
+.hand{font-family:'Caveat',cursive;font-weight:600}
+.container{max-width:1140px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+/* ---------- wiggle ---------- */
+@keyframes wiggle{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2.5deg)}}
+.wigglable:hover{animation:wiggle .3s ease-in-out 2}
+
+/* ---------- buttons: chunky pills ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.98rem;text-decoration:none;padding:14px 28px;border-radius:999px;min-height:50px;border:none;cursor:pointer;transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease}
+.btn.coral{background:var(--coral);color:#fff;box-shadow:0 5px 0 var(--coral-deep)}
+.btn.coral:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--coral-deep)}
+.btn.coral:active{transform:translateY(2px);box-shadow:0 2px 0 var(--coral-deep)}
+.btn.teal{background:var(--teal);color:#fff;box-shadow:0 5px 0 var(--teal-deep)}
+.btn.teal:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--teal-deep)}
+.btn.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink), 0 4px 0 rgba(43,52,64,.25)}
+.btn.line:hover{transform:translateY(-3px)}
+
+/* ---------- tape + pin helpers ---------- */
+.tape-tl,.tape-tr{position:relative}
+.tape-tl::before,.tape-tr::after{content:"";position:absolute;width:84px;height:24px;background:rgba(255,198,62,.5);border-left:1px dashed rgba(43,52,64,.12);border-right:1px dashed rgba(43,52,64,.12);top:-11px;z-index:2}
+.tape-tl::before{left:-26px;transform:rotate(-38deg)}
+.tape-tr::after{right:-26px;transform:rotate(38deg)}
+.pin{position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 3px 2px rgba(43,52,64,.25))}
+
+/* ---------- header: floating rounded card nav ---------- */
+header.site{position:sticky;top:12px;z-index:60;padding:0 14px}
+.navcard{max-width:1180px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:var(--shadow), inset 0 0 0 1.5px var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 18px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.logo-badge{width:44px;height:44px;border-radius:14px;background:var(--sun);display:grid;place-items:center;transform:rotate(-4deg)}
+.logo strong{font-weight:800;font-size:1.12rem;line-height:1.15;display:block}
+.logo .hand{display:block;font-size:1.05rem;color:var(--coral);line-height:.9}
+nav.chips ul{display:flex;gap:4px;list-style:none}
+nav.chips a{display:inline-block;text-decoration:none;font-weight:600;font-size:.92rem;color:var(--gray);padding:9px 14px;border-radius:999px;transition:background .2s ease,color .2s ease,transform .22s cubic-bezier(.34,1.56,.64,1)}
+nav.chips a:hover{background:var(--sun-soft);color:var(--ink);transform:translateY(-2px)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-call{text-decoration:none;font-weight:700;color:var(--ink);font-size:.95rem;white-space:nowrap}
+@media (max-width:1000px){nav.chips{display:none}}
+@media (max-width:640px){.nav-call{display:none}.nav-right .btn{display:none}}
+
+/* ---------- wavy dividers ---------- */
+.wave{display:block;width:100%;height:40px}
+
+/* ---------- hero: bulletin board ---------- */
+.hero{padding:74px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}
+.hello-tag{display:inline-flex;align-items:center;gap:9px;background:#fff;border-radius:999px;padding:9px 18px;font-weight:600;font-size:.9rem;color:var(--teal-deep);box-shadow:inset 0 0 0 2px var(--teal);margin-bottom:22px;transform:rotate(-1.5deg)}
+.hero h1{font-size:clamp(2.1rem,4.8vw,3.6rem);line-height:1.13;font-weight:800}
+.hero h1 .mark-sun{position:relative;white-space:nowrap}
+.hero h1 .mark-sun::after{content:"";position:absolute;left:-4px;right:-4px;bottom:6%;height:38%;background:var(--sun);z-index:-1;border-radius:6px;transform:rotate(-1deg)}
+.hero .annot{position:relative;display:block;margin:10px 0 0 4px;font-size:clamp(1.35rem,2.6vw,1.7rem);color:var(--teal-deep);transform:rotate(-1.2deg)}
+.hero p.lede{margin:20px 0 28px;font-size:1.08rem;color:var(--gray);max-width:50ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.mini-badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border-radius:999px;padding:7px 14px;font-size:.82rem;font-weight:600;color:var(--gray);box-shadow:inset 0 0 0 1.5px var(--line)}
+.mini-badge svg{flex:none}
+.hero-board{position:relative;min-height:500px}
+.snap{position:absolute;background:#fff;border-radius:12px;padding:10px;box-shadow:var(--shadow)}
+.snap .photo{border-radius:8px;background-size:cover;background-position:center;background-color:var(--sun-soft)}
+.snap .cap{font-family:'Caveat',cursive;font-weight:600;font-size:1.2rem;color:var(--gray);text-align:center;padding:8px 4px 2px}
+.snap-1{width:min(320px,66%);top:0;left:2%;transform:rotate(-3deg);z-index:2}
+.snap-1 .photo{height:250px;background-image:url("https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?auto=format&fit=crop&w=1600&q=80")}
+.snap-2{width:min(270px,56%);bottom:24px;right:0;transform:rotate(2.6deg);z-index:3}
+.snap-2 .photo{height:210px;background-image:url("https://images.unsplash.com/photo-1773227054096-2857c73ef2da?auto=format&fit=crop&w=1600&q=80")}
+.sticky-note{position:absolute;z-index:4;left:6%;bottom:0;width:180px;background:var(--sun);border-radius:4px;padding:38px 16px 18px;transform:rotate(-5deg);box-shadow:0 10px 20px rgba(43,52,64,.18);font-family:'Caveat',cursive;font-weight:700;font-size:1.35rem;line-height:1.25;color:#5c4300;text-align:center}
+.hero-arrow{position:absolute;z-index:4;top:38%;right:26%;width:110px;transform:rotate(14deg)}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr}.hero-board{min-height:460px;max-width:520px;margin:0 auto}}
+@media (max-width:480px){.hero-board{min-height:430px}.sticky-note{width:150px;font-size:1.2rem}.hero-arrow{display:none}}
+
+/* ---------- section headers ---------- */
+.sec-kick{display:inline-block;font-family:'Caveat',cursive;font-weight:700;font-size:1.5rem;color:var(--coral);transform:rotate(-1.4deg);margin-bottom:6px}
+.sec-title{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.2}
+.sec-sub{color:var(--gray);margin-top:12px;font-size:1.04rem}
+
+/* ---------- services: pinned notes ---------- */
+.services{background:#fff;padding:78px 0 84px}
+.services .head{text-align:center;max-width:660px;margin:0 auto 56px}
+.note-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 24px}
+.notecard{position:relative;background:var(--board);border-radius:10px;padding:38px 20px 22px;box-shadow:0 6px 16px rgba(43,52,64,.1), inset 0 0 0 1.5px var(--line);transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease}
+.notecard:nth-child(4n+1){transform:rotate(-1.3deg)}
+.notecard:nth-child(4n+2){transform:rotate(1deg)}
+.notecard:nth-child(4n+3){transform:rotate(-.8deg)}
+.notecard:nth-child(4n+4){transform:rotate(1.4deg)}
+.notecard:hover{transform:rotate(0) translateY(-6px) scale(1.02);box-shadow:0 14px 28px rgba(43,52,64,.16), inset 0 0 0 1.5px var(--line)}
+.notecard .nc-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:14px}
+.notecard:nth-child(3n+1) .nc-ic{background:#ffe9e5}
+.notecard:nth-child(3n+2) .nc-ic{background:#dff3f2}
+.notecard:nth-child(3n+3) .nc-ic{background:var(--sun-soft)}
+.notecard h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.notecard p{font-size:.9rem;color:var(--gray);line-height:1.6}
+.notecard .hand-note{display:block;margin-top:10px;font-family:'Caveat',cursive;font-weight:600;font-size:1.15rem;color:var(--teal-deep)}
+@media (max-width:1000px){.note-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.note-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto}}
+
+/* ---------- how (steps with arrows) ---------- */
+.how{padding:84px 0 70px}
+.how .head{max-width:620px;margin:0 auto 60px;text-align:center}
+.how-row{display:grid;grid-template-columns:1fr 90px 1fr 90px 1fr 90px 1fr;align-items:start;gap:0}
+.howstep{background:#fff;border-radius:18px;padding:28px 22px;box-shadow:var(--shadow), inset 0 0 0 1.5px var(--line);text-align:center;position:relative}
+.hownum{position:absolute;top:-17px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--coral);color:#fff;font-weight:800;font-size:1rem;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;box-shadow:0 4px 0 var(--coral-deep)}
+.howstep:nth-child(odd) .hownum{background:var(--teal);box-shadow:0 4px 0 var(--teal-deep);transform:translateX(-50%) rotate(3deg)}
+.howstep h3{font-size:1.04rem;margin:12px 0 8px}
+.howstep p{font-size:.9rem;color:var(--gray)}
+.how-arrow{align-self:center;padding:0 6px;margin-top:20px}
+@media (max-width:960px){.how-row{grid-template-columns:1fr;gap:40px;max-width:420px;margin:0 auto}.how-arrow{display:none}}
+
+/* ---------- snapshots strip ---------- */
+.snapshots{background:var(--teal);padding:78px 0;position:relative;overflow:hidden}
+.snapshots::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1.4px, transparent 1.4px);background-size:30px 30px}
+.snapshots .head{position:relative;text-align:center;max-width:640px;margin:0 auto 50px;color:#fff}
+.snapshots .sec-kick{color:var(--sun)}
+.snapshots .sec-title{color:#fff}
+.snapshots .sec-sub{color:#d2edeb}
+.snap-row{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:0 auto;padding:0 22px}
+.snap-row .snap{position:relative}
+.snap-row .snap:nth-child(1){transform:rotate(-2.4deg)}
+.snap-row .snap:nth-child(2){transform:rotate(1.6deg)}
+.snap-row .snap:nth-child(3){transform:rotate(-1.2deg)}
+.snap-row .photo{height:230px}
+.sr-1 .photo{background-image:url("https://images.unsplash.com/photo-1758691031844-c8c880a9b764?auto=format&fit=crop&w=1600&q=80")}
+.sr-2 .photo{background-image:url("https://images.unsplash.com/photo-1758874960868-eebf9d36d5d5?auto=format&fit=crop&w=1600&q=80")}
+.sr-3 .photo{background-image:url("https://images.unsplash.com/photo-1587556930720-58ec521056a5?auto=format&fit=crop&w=1600&q=80")}
+@media (max-width:860px){.snap-row{grid-template-columns:1fr;max-width:400px}}
+
+/* ---------- cheers (testimonials as sticky notes) ---------- */
+.cheers{padding:86px 0 70px}
+.cheers .head{text-align:center;max-width:620px;margin:0 auto 58px}
+.cheer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.cheer{position:relative;border-radius:6px;padding:44px 24px 24px;box-shadow:0 10px 22px rgba(43,52,64,.13)}
+.cheer:nth-child(1){background:var(--sun-soft);transform:rotate(-1.6deg)}
+.cheer:nth-child(2){background:#e3f5f4;transform:rotate(1.2deg)}
+.cheer:nth-child(3){background:#ffeae6;transform:rotate(-.9deg)}
+.cheer blockquote{font-size:.98rem;line-height:1.7;color:var(--ink)}
+.cheer .who{margin-top:16px;font-family:'Caveat',cursive;font-weight:700;font-size:1.3rem;color:var(--teal-deep)}
+.cheer .who small{display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray)}
+@media (max-width:900px){.cheer-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+
+/* ---------- neighborhood board ---------- */
+.hood{background:#fff;padding:80px 0}
+.hood-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.hood-map{position:relative;background:var(--board);border-radius:22px;padding:34px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.town-pins{list-style:none;display:grid;gap:14px}
+.town-pins li{display:flex;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:var(--shadow);font-weight:600;transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.town-pins li:hover{transform:translateX(6px) rotate(-.5deg)}
+.town-pins .dot{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.town-pins li:nth-child(1) .dot{background:#ffe9e5}
+.town-pins li:nth-child(2) .dot{background:#dff3f2}
+.town-pins li:nth-child(3) .dot{background:var(--sun-soft)}
+.town-pins li:nth-child(4) .dot{background:#eee9fb}
+.town-pins small{display:block;font-weight:500;color:var(--gray);font-size:.8rem}
+.hood-note{position:absolute;top:-20px;right:-8px;background:var(--sun);border-radius:4px;padding:12px 16px;font-family:'Caveat',cursive;font-weight:700;font-size:1.25rem;color:#5c4300;transform:rotate(3deg);box-shadow:0 8px 16px rgba(43,52,64,.15)}
+@media (max-width:880px){.hood-grid{grid-template-columns:1fr}}
+
+/* ---------- FAQ ---------- */
+.faq{padding:84px 0 66px}
+.faq .head{text-align:center;max-width:600px;margin:0 auto 48px}
+.faq-list{max-width:760px;margin:0 auto}
+.faq details{background:#fff;border-radius:16px;box-shadow:var(--shadow), inset 0 0 0 1.5px var(--line);margin-bottom:14px;transition:box-shadow .25s ease}
+.faq details[open]{box-shadow:0 12px 26px rgba(43,52,64,.13), inset 0 0 0 2px var(--teal)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-weight:700;font-size:1.02rem;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq .bub{flex:none;width:32px;height:32px;border-radius:50%;background:var(--sun-soft);display:grid;place-items:center;transition:transform .25s cubic-bezier(.34,1.56,.64,1), background .25s ease}
+.faq details[open] .bub{transform:rotate(135deg);background:#dff3f2}
+.faq .ans{padding:0 24px 22px;color:var(--gray);font-size:.96rem}
+.faq .ans .hand{color:var(--coral);font-size:1.2rem}
+
+/* ---------- RSVP (contact) ---------- */
+.rsvp{padding:20px 0 96px}
+.rsvp-board{background:#fff;border-radius:26px;box-shadow:0 20px 50px rgba(43,52,64,.14), inset 0 0 0 1.5px var(--line);display:grid;grid-template-columns:.95fr 1.05fr;overflow:visible;position:relative}
+.rsvp-board>*{min-width:0}
+.rsvp-side{background:var(--coral);border-radius:26px 0 0 26px;padding:50px 42px;color:#fff;position:relative;overflow:hidden}
+.rsvp-side::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1.4px, transparent 1.4px);background-size:28px 28px}
+.rsvp-side>*{position:relative}
+.rsvp-side .sec-kick{color:var(--sun)}
+.rsvp-side h2{color:#fff;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.2}
+.rsvp-side p{color:#ffe3de;margin-top:14px}
+.rsvp-facts{list-style:none;margin-top:26px;display:grid;gap:12px}
+.rsvp-facts li{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.95rem}
+.rsvp-facts a{color:#fff}
+.rsvp-facts .fic{flex:none;width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+form.rsvp-form{padding:50px 44px}
+.rrow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rfield{margin-bottom:18px;display:flex;flex-direction:column;gap:7px}
+.rfield label{font-weight:700;font-size:.85rem}
+.rfield label .hand{color:var(--teal-deep);font-size:1.1rem;font-weight:600}
+.rfield input,.rfield select,.rfield textarea{width:100%;max-width:100%;min-width:0;font-family:'Poppins',sans-serif;font-size:.98rem;color:var(--ink);background:var(--board);border:2px solid var(--line);border-radius:14px;padding:12px 16px;min-height:48px;transition:border-color .2s ease, background .2s ease}
+.rfield textarea{min-height:110px;resize:vertical}
+.rfield input:focus,.rfield select:focus,.rfield textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+@media (max-width:900px){.rsvp-board{grid-template-columns:1fr}.rsvp-side{border-radius:26px 26px 0 0}}
+@media (max-width:520px){.rsvp-side,form.rsvp-form{padding:34px 24px}.rrow{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer.site{background:var(--ink);color:#c8cfd8;padding:46px 0 120px}
+.foot-flex{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+.foot-logo{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.08rem}
+.foot-logo .logo-badge{width:38px;height:38px;border-radius:12px}
+footer p{font-size:.88rem}
+@media (min-width:768px){footer.site{padding-bottom:46px}}
+
+/* ---------- mobile bar ---------- */
+.mobilebar{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;gap:10px;background:#fff;border-radius:18px;box-shadow:0 12px 30px rgba(43,52,64,.22), inset 0 0 0 1.5px var(--line);padding:10px}
+.mobilebar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:12px;font-weight:700;font-size:.95rem;text-decoration:none}
+.mobilebar .call{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.mobilebar .go{background:var(--coral);color:#fff;box-shadow:0 4px 0 var(--coral-deep)}
+@media (min-width:768px){.mobilebar{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navcard">
+    <a class="logo" href="#top" aria-label="HarborLight Home Care — home">
+      <span class="logo-badge wigglable" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M13 21.5c-5-3-8-6-8-9.6C5 9 7 7.2 9.4 7.2c1.4 0 2.7.7 3.6 1.9.9-1.2 2.2-1.9 3.6-1.9C19 7.2 21 9 21 11.9c0 3.6-3 6.6-8 9.6Z" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" fill="#fff"/>
+          <path d="M9.5 12.5h2l1-2.2 1.6 4 1-1.8h1.9" stroke="#f4634e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span><strong>HarborLight Home Care</strong><span class="hand">your neighbors in Oakville, CT</span></span>
+    </a>
+    <nav class="chips" aria-label="Main navigation">
+      <ul>
+        <li><a href="#help">How we help</a></li>
+        <li><a href="#how">Getting started</a></li>
+        <li><a href="#cheers">Neighbors say</a></li>
+        <li><a href="#towns">Our towns</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-call" href="tel:+18605550100">(860) 555-0100</a>
+      <a class="btn coral" href="#hello" style="min-height:44px;padding:10px 22px">Say hello</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Welcome">
+  <div class="container hero-grid">
+    <div class="pop-in">
+      <span class="hello-tag wigglable">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z" stroke="#12958d" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#12958d" stroke-width="2"/></svg>
+        Now serving Oakville, Watertown, Waterbury &amp; Litchfield County
+      </span>
+      <h1>Good care, <span class="mark-sun">good company,</span> right at home.
+        <span class="annot hand">— and yes, we bring the groceries too!</span>
+      </h1>
+      <p class="lede">HarborLight Home Care is Oakville's new, locally-owned home health team. We help older neighbors stay safe, comfortable and connected at home — with background-checked caregivers, flexible schedules from a few hours to 24/7, and one friendly point of contact who actually knows your name.</p>
+      <div class="hero-ctas">
+        <a class="btn coral" href="#hello">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10.5h8M8 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12a8 8 0 1 1 3.1 6.3L4 19.5l1-3.6A7.9 7.9 0 0 1 4 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          Get your free care visit
+        </a>
+        <a class="btn line" href="tel:+18605550100">Call (860) 555-0100</a>
+      </div>
+      <div class="hero-meta">
+        <span class="mini-badge wigglable"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5.5 6v5.2c0 4.6 2.9 7.8 6.5 9.3 3.6-1.5 6.5-4.7 6.5-9.3V6L12 3Z" stroke="#12958d" stroke-width="2" stroke-linejoin="round"/><path d="m9.2 11.8 2 2 3.6-3.9" stroke="#12958d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed · Insured · Bonded</span>
+        <span class="mini-badge wigglable"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8.4" r="3.4" stroke="#f4634e" stroke-width="2"/><path d="M5.8 19.6c.8-3.4 3.2-5.2 6.2-5.2s5.4 1.8 6.2 5.2" stroke="#f4634e" stroke-width="2" stroke-linecap="round"/></svg>Background-checked team</span>
+        <span class="mini-badge wigglable"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.6" stroke="#e0a51f" stroke-width="2"/><path d="M12 7.4V12l3.2 2.4" stroke="#e0a51f" stroke-width="2" stroke-linecap="round"/></svg>A few hours or 24/7</span>
+      </div>
+    </div>
+    <div class="hero-board" aria-hidden="true">
+      <figure class="snap snap-1 pop-in">
+        <svg class="pin" width="24" height="28" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#f4634e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ff9c8e"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div class="photo" role="img" aria-label="A caregiver coloring with an older couple at their table"></div>
+        <figcaption class="cap">craft hour with Mrs. R &amp; Co.</figcaption>
+      </figure>
+      <figure class="snap snap-2 tape-tl pop-in">
+        <div class="photo" role="img" aria-label="A cheerful older couple waving hello"></div>
+        <figcaption class="cap">say hi to the Hendersons!</figcaption>
+      </figure>
+      <div class="sticky-note pop-in">don't forget — first visit is free!</div>
+      <svg class="hero-arrow" viewBox="0 0 110 60" fill="none">
+        <path d="M6 8c30 4 62 14 88 40" stroke="#f4634e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>
+        <path d="m84 42 10 8-13 2" stroke="#f4634e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26C120 8 240 8 360 22s240 16 360 2 240-18 360-4 240 16 360 2V40H0Z" fill="#ffffff"/></svg>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="help" aria-label="Services">
+  <div class="container">
+    <div class="head">
+      <span class="sec-kick">pinned to our board this week (and every week)</span>
+      <h2 class="sec-title">Eight ways we show up for our neighbors</h2>
+      <p class="sec-sub">Mix and match — your care plan is built from whichever of these your family actually needs.</p>
+    </div>
+    <div class="note-grid">
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#12958d"/><circle cx="9.5" cy="6.8" r="2.2" fill="#6fc7c2"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="7.6" r="3.2" stroke="#f4634e" stroke-width="2"/><path d="M6 20c.7-3.6 3-5.6 6-5.6s5.3 2 6 5.6" stroke="#f4634e" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>Personal Care</h3>
+        <p>Bathing, grooming, dressing and safe moving around the house — handled with warmth and total respect.</p>
+        <span class="hand-note">dignity first, always</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#f4634e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ff9c8e"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20c-4.8-2.9-7.4-5.5-7.4-8.7 0-2.3 1.7-4 3.9-4 1.4 0 2.6.7 3.5 1.8.9-1.1 2.1-1.8 3.5-1.8 2.2 0 3.9 1.7 3.9 4 0 3.2-2.6 5.8-7.4 8.7Z" stroke="#12958d" stroke-width="2" stroke-linejoin="round"/></svg></span>
+        <h3>Companionship</h3>
+        <p>Coffee chats, puzzles, walks around the block — genuine friendship that keeps spirits high.</p>
+        <span class="hand-note">gin rummy champs wanted</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#e0a51f"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ffd97a"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 14.5h15c0 3.1-2.8 5.1-7.5 5.1s-7.5-2-7.5-5.1Z" stroke="#e0a51f" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 11.2c-.5-1.4.5-2 .2-3.2M12.2 11.2c-.5-1.4.5-2 .2-3.2M15.9 11.2c-.5-1.4.5-2 .2-3.2" stroke="#e0a51f" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Homemaking &amp; Meals</h3>
+        <p>Tidy rooms, fresh laundry and real cooked meals — the everyday things that make a house feel right.</p>
+        <span class="hand-note">famous for our soup days</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#12958d"/><circle cx="9.5" cy="6.8" r="2.2" fill="#6fc7c2"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="#f4634e" stroke-width="2"/><path d="M12 7.6V12l3 2.2" stroke="#f4634e" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>Medication Reminders</h3>
+        <p>Right pill, right time, every time — friendly nudges that keep the routine on track.</p>
+        <span class="hand-note">no more "did I take it?"</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#f4634e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ff9c8e"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12a7 7 0 0 1 14 0" stroke="#12958d" stroke-width="2" stroke-linecap="round"/><path d="M3.5 12.2h3.2v4.6H3.5zM17.3 12.2h3.2v4.6h-3.2z" stroke="#12958d" stroke-width="2" stroke-linejoin="round"/></svg></span>
+        <h3>Respite for Family</h3>
+        <p>You take the weekend — we'll take wonderful care of Mom. Come back rested; everything's handled.</p>
+        <span class="hand-note">caregivers need care too</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#e0a51f"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ffd97a"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 15.6 6 11a2 2 0 0 1 1.9-1.4h8.2A2 2 0 0 1 18 11l1.5 4.6" stroke="#e0a51f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="15.2" width="16" height="3.4" rx="1.2" stroke="#e0a51f" stroke-width="2"/><circle cx="7.8" cy="18.6" r="1.5" stroke="#e0a51f" stroke-width="1.8"/><circle cx="16.2" cy="18.6" r="1.5" stroke="#e0a51f" stroke-width="1.8"/></svg></span>
+        <h3>Rides &amp; Errands</h3>
+        <p>Doctor visits, the pharmacy, the farmers market — a safe ride and a helping hand at both ends.</p>
+        <span class="hand-note">we wait &amp; walk you in</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#12958d"/><circle cx="9.5" cy="6.8" r="2.2" fill="#6fc7c2"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M17.7 6.3l-2.1 2.1M8.4 15.6l-2.1 2.1" stroke="#f4634e" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" stroke="#f4634e" stroke-width="2"/></svg></span>
+        <h3>24-Hour &amp; Live-In Care</h3>
+        <p>Day shifts, night shifts or a live-in caregiver — steady support around the clock when it matters most.</p>
+        <span class="hand-note">someone's always there</span>
+      </article>
+      <article class="notecard">
+        <svg class="pin" width="22" height="26" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#f4634e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ff9c8e"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="nc-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13h4l2-4.6 3.4 8L15.5 13H20" stroke="#12958d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Recovery Support</h3>
+        <p>Fresh out of the hospital? We handle meals, mobility and med reminders while strength comes back.</p>
+        <span class="hand-note">home heals faster</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path d="M0 26C120 8 240 8 360 22s240 16 360 2 240-18 360-4 240 16 360 2V40H0Z" fill="#ffffff"/></svg>
+
+<!-- ============ HOW ============ -->
+<section class="how" id="how" aria-label="How to get started">
+  <div class="container">
+    <div class="head">
+      <span class="sec-kick">easier than organizing a potluck, promise</span>
+      <h2 class="sec-title">Getting started takes four friendly steps</h2>
+    </div>
+    <div class="how-row">
+      <div class="howstep pop-in">
+        <span class="hownum">1</span>
+        <h3>We stop by (free!)</h3>
+        <p>A no-cost, no-strings in-home visit. We meet your person, see the space, and listen — a lot.</p>
+      </div>
+      <svg class="how-arrow" viewBox="0 0 90 40" fill="none" aria-hidden="true"><path d="M6 28C28 12 52 10 78 18" stroke="#12958d" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/><path d="m70 12 10 5-8 7" stroke="#12958d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="howstep pop-in">
+        <span class="hownum">2</span>
+        <h3>We write the plan</h3>
+        <p>A personalized care plan around real routines — morning coffee, church on Sundays, the whole rhythm.</p>
+      </div>
+      <svg class="how-arrow" viewBox="0 0 90 40" fill="none" aria-hidden="true"><path d="M6 14c22 14 46 16 72 8" stroke="#f4634e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/><path d="m70 28 10-5-8-7" stroke="#f4634e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="howstep pop-in">
+        <span class="hownum">3</span>
+        <h3>We make the match</h3>
+        <p>A background-checked caregiver picked for skills and personality — introduced in person first.</p>
+      </div>
+      <svg class="how-arrow" viewBox="0 0 90 40" fill="none" aria-hidden="true"><path d="M6 28C28 12 52 10 78 18" stroke="#e0a51f" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/><path d="m70 12 10 5-8 7" stroke="#e0a51f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="howstep pop-in">
+        <span class="hownum">4</span>
+        <h3>We keep in touch</h3>
+        <p>Ongoing supervision plus honest family updates. Plans flex whenever life does — just call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SNAPSHOTS ============ -->
+<section class="snapshots" aria-label="Snapshots from around town">
+  <div class="head container">
+    <span class="sec-kick">fresh from the community fridge door</span>
+    <h2 class="sec-title">Snapshots from around town</h2>
+    <p class="sec-sub">Real moments are the whole point — care should look like living, just with a good friend nearby.</p>
+  </div>
+  <div class="snap-row">
+    <figure class="snap sr-1 tape-tl tape-tr pop-in">
+      <div class="photo" role="img" aria-label="A woman relaxing on a colorful couch"></div>
+      <figcaption class="cap">Tuesday stories on the good couch</figcaption>
+    </figure>
+    <figure class="snap sr-2 pop-in">
+      <svg class="pin" width="24" height="28" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#ffc63e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ffe19a"/><path d="M12 16.5v9" stroke="#5d6875" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <div class="photo" role="img" aria-label="A woman at her kitchen table"></div>
+      <figcaption class="cap">lunch prep with extra laughs</figcaption>
+    </figure>
+    <figure class="snap sr-3 tape-tl pop-in">
+      <div class="photo" role="img" aria-label="A smiling woman in a purple polo"></div>
+      <figcaption class="cap">garden club, back in session</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CHEERS ============ -->
+<section class="cheers" id="cheers" aria-label="What neighbors say">
+  <div class="container">
+    <div class="head">
+      <span class="sec-kick">notes neighbors have sent us</span>
+      <h2 class="sec-title">Word travels fast around here</h2>
+    </div>
+    <div class="cheer-grid">
+      <figure class="cheer pop-in">
+        <svg class="pin" width="24" height="28" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#e0a51f"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ffd97a"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <blockquote>&ldquo;Mom calls her caregiver 'my Tuesday-Thursday friend.' The house is tidier, she's eating better, and honestly? She's happier than she's been in a year.&rdquo;</blockquote>
+        <figcaption class="who">— Daughter of a client <small>Watertown · (sample)</small></figcaption>
+      </figure>
+      <figure class="cheer pop-in">
+        <svg class="pin" width="24" height="28" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#12958d"/><circle cx="9.5" cy="6.8" r="2.2" fill="#6fc7c2"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <blockquote>&ldquo;When Dad came home after his hip surgery, HarborLight had a plan before we'd even unpacked his bag. Meals, rides to PT, the works. Total lifesavers.&rdquo;</blockquote>
+        <figcaption class="who">— Son of a client <small>Oakville · (sample)</small></figcaption>
+      </figure>
+      <figure class="cheer pop-in">
+        <svg class="pin" width="24" height="28" viewBox="0 0 24 28" fill="none"><circle cx="12" cy="9" r="7.5" fill="#f4634e"/><circle cx="9.5" cy="6.8" r="2.2" fill="#ff9c8e"/><path d="M12 16.5v9" stroke="#8a93a1" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <blockquote>&ldquo;One phone number, one person who knows our whole situation. After two other agencies, that alone felt like a miracle — and the care has been wonderful.&rdquo;</blockquote>
+        <figcaption class="who">— Granddaughter of a client <small>Waterbury · (sample)</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEIGHBORHOOD ============ -->
+<section class="hood" id="towns" aria-label="Where we serve">
+  <div class="container hood-grid">
+    <div class="pop-in">
+      <span class="sec-kick">our little corner of Connecticut</span>
+      <h2 class="sec-title">If you can get to the Watertown line, so can we</h2>
+      <p class="sec-sub">We keep our patch small on purpose. Local caregivers, short drives, and a team that knows which pharmacy has the shortest line on Mondays. That's what "locally owned" gets you.</p>
+      <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn teal" href="#hello">Check your address with us</a>
+      </div>
+    </div>
+    <div class="hood-map pop-in">
+      <span class="hood-note">house calls only — that's the point!</span>
+      <ul class="town-pins">
+        <li><span class="dot"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 10 12 4.5 19.5 10v8.2a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8V10Z" stroke="#f4634e" stroke-width="2" stroke-linejoin="round"/></svg></span>Oakville<small>home base — we're your neighbors here</small></li>
+        <li><span class="dot"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0 1 12 4.3a6.5 6.5 0 0 1 6.5 6.5C18.5 15.4 12 21 12 21Z" stroke="#12958d" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10.8" r="2.3" stroke="#12958d" stroke-width="2"/></svg></span>Watertown<small>full coverage, quick response</small></li>
+        <li><span class="dot"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0 1 12 4.3a6.5 6.5 0 0 1 6.5 6.5C18.5 15.4 12 21 12 21Z" stroke="#e0a51f" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10.8" r="2.3" stroke="#e0a51f" stroke-width="2"/></svg></span>Waterbury<small>full coverage, all neighborhoods</small></li>
+        <li><span class="dot"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19.5 12 4l7 15.5-7-3.4-7 3.4Z" stroke="#7c6bd6" stroke-width="2" stroke-linejoin="round"/></svg></span>Litchfield County<small>towns throughout — just ask</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1)"><path d="M0 26C120 8 240 8 360 22s240 16 360 2 240-18 360-4 240 16 360 2V40H0Z" fill="#ffffff"/></svg>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" aria-label="Frequently asked questions">
+  <div class="container">
+    <div class="head">
+      <span class="sec-kick">asked at every open house, answered here</span>
+      <h2 class="sec-title">The questions everyone asks first</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>What will it cost — and does insurance chip in?
+          <span class="bub" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v11M1.5 7h11" stroke="#2b3440" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="ans"><p>It depends on hours and the kind of help, which is exactly what the free visit figures out — then you get clear, written pricing with zero surprises. Good news: many long-term care insurance policies cover services like ours, and we'll happily help you decode your policy and file the paperwork. <span class="hand">we're weirdly good at insurance forms</span></p></div>
+      </details>
+      <details>
+        <summary>Who exactly will be coming into our home?
+          <span class="bub" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v11M1.5 7h11" stroke="#2b3440" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="ans"><p>Someone we'd trust in our own homes. Every caregiver passes a full background check, reference checks and in-person interviews. Then we match by personality — hobbies, humor, energy — and introduce them to your family face-to-face before any care starts. If it's not a great fit, we re-match, no hard feelings.</p></div>
+      </details>
+      <details>
+        <summary>Can we start small and change the schedule later?
+          <span class="bub" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v11M1.5 7h11" stroke="#2b3440" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="ans"><p>Absolutely — most families do. Start with a few hours a week for errands and company, then adjust up or down as things change. We cover everything from occasional visits to full 24-hour and live-in care, and switching levels never means switching companies.</p></div>
+      </details>
+      <details>
+        <summary>Do you come to our town?
+          <span class="bub" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v11M1.5 7h11" stroke="#2b3440" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="ans"><p>We serve Oakville, Watertown, Waterbury and towns across Litchfield County. On the edge of the map? Call (860) 555-0100 anyway — if we can make it work, we will.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RSVP ============ -->
+<section class="rsvp" id="hello" aria-label="Say hello and book a free visit">
+  <div class="container">
+    <div class="rsvp-board pop-in">
+      <div class="rsvp-side">
+        <span class="sec-kick">this part's easy</span>
+        <h2>Say hello — the first visit is on us</h2>
+        <p>Drop your details here and we'll ring you back (usually same-day) to set up a free in-home care visit. No pressure, no jargon — just neighbors talking about what would help.</p>
+        <ul class="rsvp-facts">
+          <li><span class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.8c-.5.5-.8 1.4-.6 2.3.9 5.2 6 10.3 11.2 11.2.9.2 1.8-.1 2.3-.6l1.2-1.2c.4-.5.4-1.3-.2-1.7l-2.7-1.8a1.1 1.1 0 0 0-1.4.1l-.9.9c-2-1-4-3-5-5l.9-.9c.4-.4.4-1 .1-1.4L8.1 4a1.1 1.1 0 0 0-1.7-.2L5 4.8Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></span><a href="tel:+18605550100">(860) 555-0100</a></li>
+          <li><span class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.2A6.5 6.5 0 0 1 12 4.3a6.5 6.5 0 0 1 6.5 6.5C18.5 15.4 12 21 12 21Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10.8" r="2.3" stroke="#fff" stroke-width="2"/></svg></span>Oakville, Connecticut</li>
+          <li><span class="fic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5.5 6v5.2c0 4.6 2.9 7.8 6.5 9.3 3.6-1.5 6.5-4.7 6.5-9.3V6L12 3Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="m9.2 11.8 2 2 3.6-3.9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Licensed · Insured · Bonded</li>
+        </ul>
+      </div>
+      <form class="rsvp-form" name="harborlight-pop" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="harborlight-pop">
+        <div class="rrow">
+          <div class="rfield">
+            <label for="hp-name">Your name</label>
+            <input id="hp-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="rfield">
+            <label for="hp-phone">Best phone number</label>
+            <input id="hp-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="rfield">
+          <label for="hp-email">Email</label>
+          <input id="hp-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="rfield">
+          <label for="hp-service">What kind of help sounds right? <span class="hand">(guessing is fine!)</span></label>
+          <select id="hp-service" name="service" required>
+            <option value="" selected disabled>Pick one…</option>
+            <option>Personal Care</option>
+            <option>Companionship</option>
+            <option>Homemaking &amp; Meals</option>
+            <option>Medication Reminders</option>
+            <option>Respite for Family Caregivers</option>
+            <option>Transportation &amp; Errands</option>
+            <option>24-Hour &amp; Live-In Care</option>
+            <option>Recovery &amp; Post-Hospital Support</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="rfield">
+          <label for="hp-msg">Tell us a little about your family</label>
+          <textarea id="hp-msg" name="message" placeholder="Who needs a hand, what a typical week looks like, anything on your mind…"></textarea>
+        </div>
+        <button class="btn coral" type="submit" style="width:100%">Send it over — we'll call you back</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="container foot-flex">
+    <span class="foot-logo">
+      <span class="logo-badge" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+          <path d="M13 21.5c-5-3-8-6-8-9.6C5 9 7 7.2 9.4 7.2c1.4 0 2.7.7 3.6 1.9.9-1.2 2.2-1.9 3.6-1.9C19 7.2 21 9 21 11.9c0 3.6-3 6.6-8 9.6Z" stroke="#2b3440" stroke-width="2" stroke-linejoin="round" fill="#fff"/>
+          <path d="M9.5 12.5h2l1-2.2 1.6 4 1-1.8h1.9" stroke="#f4634e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      HarborLight Home Care
+    </span>
+    <p>© 2026 HarborLight Home Care · Licensed · Insured · Bonded<br>
+    Oakville, CT · (860) 555-0100 · Proudly serving Oakville, Watertown, Waterbury &amp; Litchfield County</p>
+  </div>
+</footer>
+
+<div class="mobilebar" aria-label="Quick actions">
+  <a class="call" href="tel:+18605550100">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.8c-.5.5-.8 1.4-.6 2.3.9 5.2 6 10.3 11.2 11.2.9.2 1.8-.1 2.3-.6l1.2-1.2c.4-.5.4-1.3-.2-1.7l-2.7-1.8a1.1 1.1 0 0 0-1.4.1l-.9.9c-2-1-4-3-5-5l.9-.9c.4-.4.4-1 .1-1.4L8.1 4a1.1 1.1 0 0 0-1.7-.2L5 4.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Call us
+  </a>
+  <a class="go" href="#hello">Free care visit</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || !window.gsap || !window.ScrollTrigger) return; // everything readable with no JS/GSAP
+  gsap.registerPlugin(ScrollTrigger);
+
+  // springy pops — short (≤300ms), playful, back-out ease
+  gsap.utils.toArray('.pop-in').forEach(function(el){
+    gsap.from(el, {scale:.9, y:22, opacity:0, duration:.3, ease:'back.out(2)',
+      scrollTrigger:{trigger:el, start:'top 87%'}});
+  });
+  // pinned notes & sticky cheer notes pop in a lively cascade
+  gsap.utils.toArray('.note-grid, .cheer-grid, .town-pins').forEach(function(group){
+    gsap.from(group.children, {scale:.88, y:24, opacity:0, duration:.28, ease:'back.out(2.2)',
+      stagger:.06, scrollTrigger:{trigger:group, start:'top 84%'}});
+  });
+  // hand-drawn arrows sketch themselves in
+  gsap.utils.toArray('.how-arrow path, .hero-arrow path').forEach(function(p){
+    var len = p.getTotalLength();
+    var orig = p.getAttribute('stroke-dasharray'); // keep dotted curves dotted, solid heads solid
+    gsap.fromTo(p, {strokeDashoffset:len, strokeDasharray:len + ' ' + len},
+      {strokeDashoffset:0, duration:.3, ease:'power2.out',
+       scrollTrigger:{trigger:p, start:'top 85%'},
+       onComplete:function(){ p.style.strokeDasharray = orig || 'none'; }});
+  });
+  // gentle idle sway on the hero sticky note
+  gsap.to('.sticky-note', {rotation:-3.4, duration:2.6, ease:'sine.inOut', yoyo:true, repeat:-1, transformOrigin:'top center'});
+})();
+</script>
+</body>
+</html>

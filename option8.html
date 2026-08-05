@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!-- THEME: "Storybook" — narrative scroll experience. Soft daylight palette (linen, sky, honey),
+     Newsreader serif display + Karla body. The page reads as CHAPTERS following one family's day
+     (clearly illustrative), with a side progress line that fills on scroll, alternating full-bleed
+     photo scenes and text interludes, ornamental roman chapter numerals, and a gentle timeline.
+     Motion: progress-line fill, chapter titles slide in from the margins. Full no-JS fallback. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HarborLight Home Care — Compassionate In-Home Care in Oakville, CT</title>
+<meta name="description" content="A story-first look at HarborLight Home Care: personal care, companionship and 24-hour support across Oakville, Watertown, Waterbury and Litchfield County, CT. Begin with a free in-home assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --linen:#FBF6EC; --linen-2:#F4EBDA; --sky:#D6E6F0; --sky-deep:#A8C6DA;
+  --honey:#D99A2B; --honey-deep:#B37B1B; --ink:#2C261D; --ink-soft:#5C5344;
+  --rule:#E4D9C3; --white:#FFFDF8;
+  --serif:'Newsreader',Georgia,serif; --sans:'Karla',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);background:var(--linen);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--sky)}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:680px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.15}
+em.hl{font-style:italic;color:var(--honey-deep)}
+.kicker{font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--honey-deep)}
+/* ---------- top ribbon nav ---------- */
+.masthead{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(251,246,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.masthead-inner{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wordmark{font-family:var(--serif);font-size:1.3rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:.01em}
+.wordmark svg{flex:none}
+.mast-links{display:flex;gap:26px}
+.mast-links a{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);position:relative;padding:4px 0;transition:color .2s}
+.mast-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--honey);transition:width .25s}
+.mast-links a:hover{color:var(--ink)}
+.mast-links a:hover::after{width:100%}
+.mast-call{font-size:.86rem;font-weight:700;text-decoration:none;border:1.5px solid var(--ink);padding:10px 18px;letter-spacing:.06em;transition:background .2s,color .2s,box-shadow .2s;box-shadow:3px 3px 0 var(--honey)}
+.mast-call:hover{background:var(--ink);color:var(--linen);box-shadow:1px 1px 0 var(--honey)}
+@media(max-width:900px){.mast-links{display:none}}
+@media(max-width:560px){.mast-call{display:none}}
+/* ---------- progress spine ---------- */
+.spine{position:fixed;left:26px;top:0;bottom:0;width:2px;background:var(--rule);z-index:60}
+.spine-fill{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(var(--honey),var(--honey-deep))}
+.spine-dot{position:absolute;left:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:var(--linen);border:2px solid var(--rule);transition:border-color .3s,background .3s}
+.spine-dot.lit{background:var(--honey);border-color:var(--honey-deep)}
+@media(max-width:1240px){.spine{display:none}}
+/* ---------- buttons ---------- */
+.btn-story{display:inline-block;font-family:var(--sans);font-size:.84rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--linen);padding:17px 32px;border:0;cursor:pointer;position:relative;transition:background .25s,transform .25s;box-shadow:4px 4px 0 var(--honey)}
+.btn-story:hover{background:var(--honey-deep);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-quiet{display:inline-block;font-size:.84rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:17px 6px;border-bottom:2px solid var(--honey);transition:color .2s,border-color .2s}
+.btn-quiet:hover{color:var(--honey-deep)}
+/* ---------- prologue hero ---------- */
+.prologue{min-height:92vh;display:flex;align-items:flex-end;position:relative;isolation:isolate;padding:150px 0 70px}
+.prologue::before{content:"";position:absolute;inset:0;z-index:-2;background:#B9A88C url('https://images.unsplash.com/photo-1508963493744-76fce69379c0?auto=format&fit=crop&w=1600&q=80') center 30%/cover no-repeat}
+.prologue::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(44,38,29,.18) 0%,rgba(44,38,29,.06) 40%,rgba(251,246,236,.94) 82%,var(--linen) 100%)}
+.prologue-card{max-width:720px}
+.prologue h1{font-size:clamp(2.5rem,5.6vw,4.3rem);margin:18px 0 20px}
+.prologue p.lede{font-family:var(--serif);font-size:clamp(1.08rem,1.7vw,1.3rem);font-style:italic;color:var(--ink-soft);max-width:52ch;margin-bottom:30px}
+.prologue-actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.badge-row{display:flex;gap:8px 20px;flex-wrap:wrap;margin-top:38px;font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.badge-row span{display:flex;align-items:center;gap:8px}
+.badge-row svg{color:var(--honey-deep)}
+/* ---------- chapter scaffolding ---------- */
+.chapter-head{padding:84px 0 30px;text-align:center;position:relative}
+.chapter-head .numeral{font-family:var(--serif);font-size:5.4rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--honey);display:block;margin-bottom:6px;font-style:italic}
+.chapter-head .rulewrap{display:flex;align-items:center;gap:14px;justify-content:center;margin:14px auto 0;max-width:420px}
+.chapter-head .rulewrap::before,.chapter-head .rulewrap::after{content:"";height:1px;background:var(--rule);flex:1}
+.chapter-head .rulewrap svg{color:var(--honey);flex:none}
+.chapter-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.slide-l,.slide-r{opacity:1;transform:none}
+.anim .slide-l{opacity:0;transform:translateX(-46px)}
+.anim .slide-r{opacity:0;transform:translateX(46px)}
+.anim .fade-u{opacity:0;transform:translateY(24px)}
+@media(prefers-reduced-motion:reduce){.anim .slide-l,.anim .slide-r,.anim .fade-u{opacity:1!important;transform:none!important}}
+/* ---------- scene (full-bleed photo) ---------- */
+.scene{position:relative;min-height:64vh;display:flex;align-items:flex-end;isolation:isolate;margin:34px 0}
+.scene .bg{position:absolute;inset:0;z-index:-2;background-color:#C9B896;background-size:cover;background-position:center;background-repeat:no-repeat}
+.scene::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(44,38,29,0) 30%,rgba(44,38,29,.62) 100%)}
+.scene-caption{max-width:1080px;margin:0 auto;width:100%;padding:0 24px 44px;color:var(--white)}
+.scene-caption .time{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#F3D9A4;display:block;margin-bottom:10px}
+.scene-caption p{font-family:var(--serif);font-size:clamp(1.2rem,2.4vw,1.7rem);font-style:italic;max-width:44ch;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+/* ---------- interlude (text) ---------- */
+.interlude{padding:58px 0 30px}
+.interlude .drop::first-letter{font-family:var(--serif);font-size:3.4em;float:left;line-height:.82;padding:6px 10px 0 0;color:var(--honey-deep)}
+.interlude p{font-size:1.05rem;color:var(--ink-soft);max-width:62ch;margin:0 auto 20px}
+.interlude .fact{background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--honey);padding:20px 26px;max-width:62ch;margin:28px auto 0;font-size:.95rem}
+.interlude .fact b{font-family:var(--serif);font-size:1.05rem;font-weight:600;display:block;margin-bottom:4px}
+/* ---------- services index (table of contents) ---------- */
+.toc{background:var(--linen-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:84px 0}
+.toc-list{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+.toc-item{display:flex;gap:18px;align-items:baseline;padding:20px 4px;border-bottom:1px dotted var(--sky-deep);transition:background .2s,padding .2s}
+.toc-item:hover{background:rgba(255,253,248,.8);padding-left:12px}
+.toc-item .n{font-family:var(--serif);font-style:italic;color:var(--honey-deep);font-size:1rem;flex:none;width:34px}
+.toc-item h3{font-size:1.2rem;font-weight:600}
+.toc-item p{font-size:.88rem;color:var(--ink-soft);margin-top:3px}
+.toc-item .dots{flex:1;border-bottom:1px dotted transparent}
+@media(max-width:860px){.toc-list{grid-template-columns:1fr}}
+/* ---------- timeline ---------- */
+.timeline{padding:90px 0}
+.tl-track{position:relative;max-width:680px;margin:50px auto 0;padding-left:42px}
+.tl-track::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:1.5px;background:repeating-linear-gradient(var(--sky-deep) 0 6px,transparent 6px 12px)}
+.tl-step{position:relative;padding:0 0 42px}
+.tl-step:last-child{padding-bottom:0}
+.tl-step::before{content:"";position:absolute;left:-42px;top:4px;width:21px;height:21px;border-radius:50%;background:var(--linen);border:2px solid var(--honey);box-shadow:0 0 0 5px var(--linen)}
+.tl-step .when{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--honey-deep)}
+.tl-step h3{font-size:1.35rem;margin:6px 0 8px;font-weight:600}
+.tl-step p{color:var(--ink-soft);font-size:.97rem;max-width:56ch}
+/* ---------- epilogue: facts, quotes ---------- */
+.epilogue{background:var(--ink);color:var(--linen);padding:96px 0}
+.epilogue .kicker{color:var(--honey)}
+.epilogue h2{color:var(--white)}
+.ep-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(251,246,236,.16);border:1px solid rgba(251,246,236,.16);margin-top:48px}
+.ep-cell{background:var(--ink);padding:34px 30px}
+.ep-cell .big{font-family:var(--serif);font-size:2.1rem;font-style:italic;color:var(--honey);display:block;margin-bottom:8px}
+.ep-cell p{font-size:.92rem;color:#C9BFA9}
+@media(max-width:860px){.ep-grid{grid-template-columns:1fr}}
+.quotes{padding:96px 0}
+.quote-block{max-width:760px;margin:0 auto 54px;text-align:center;padding:0 24px}
+.quote-block:last-child{margin-bottom:0}
+.quote-block .qmark{font-family:var(--serif);font-size:4rem;line-height:.5;color:var(--honey);display:block;margin-bottom:18px}
+.quote-block blockquote{font-family:var(--serif);font-size:clamp(1.25rem,2.4vw,1.7rem);font-style:italic;line-height:1.45}
+.quote-block cite{display:block;margin-top:18px;font-style:normal;font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+/* ---------- FAQ ---------- */
+.faq-sec{background:var(--linen-2);border-top:1px solid var(--rule);padding:90px 0}
+.faq-item{border-bottom:1px solid var(--rule);max-width:720px;margin:0 auto}
+.faq-item summary{list-style:none;cursor:pointer;padding:24px 8px;display:flex;justify-content:space-between;gap:18px;align-items:baseline}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary h3{font-size:1.25rem;font-weight:600}
+.faq-item summary .m{font-family:var(--serif);font-style:italic;color:var(--honey-deep);font-size:1.4rem;transition:transform .25s;flex:none}
+.faq-item[open] summary .m{transform:rotate(90deg)}
+.faq-item .a{padding:0 8px 26px;color:var(--ink-soft);font-size:.97rem;max-width:60ch}
+.faq-item summary:focus-visible{outline:3px solid var(--honey-deep);outline-offset:2px}
+/* ---------- contact ---------- */
+.begin{padding:96px 0 110px;position:relative;isolation:isolate}
+.begin::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 80% 10%,rgba(214,230,240,.55),transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(233,203,140,.3),transparent 50%)}
+.begin-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.begin-copy h2{font-size:clamp(1.9rem,3.4vw,2.8rem);margin:14px 0 18px}
+.begin-copy p{color:var(--ink-soft);max-width:44ch;margin-bottom:26px}
+.begin-copy .contact-lines{border-top:1px solid var(--rule);margin-top:8px}
+.begin-copy .cl{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:.95rem;align-items:center}
+.begin-copy .cl svg{color:var(--honey-deep);flex:none}
+.sform{background:var(--white);border:1px solid var(--rule);padding:40px 38px;box-shadow:8px 8px 0 var(--linen-2)}
+.sform h3{font-size:1.4rem;font-weight:600;margin-bottom:22px}
+.sf-field{margin-bottom:16px}
+.sf-field label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;color:var(--ink-soft)}
+.sf-field input,.sf-field select,.sf-field textarea{width:100%;font-family:var(--sans);font-size:.96rem;padding:13px 14px;border:1px solid var(--rule);background:var(--linen);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.sf-field input:focus,.sf-field select:focus,.sf-field textarea:focus{outline:none;border-color:var(--honey-deep);box-shadow:0 0 0 3px rgba(217,154,43,.2)}
+.sf-field textarea{min-height:104px;resize:vertical}
+.sf-two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sform .note{font-size:.8rem;color:var(--ink-soft);margin-top:14px;font-style:italic;font-family:var(--serif)}
+@media(max-width:900px){.begin-grid{grid-template-columns:1fr}.sf-two{grid-template-columns:1fr}}
+/* ---------- footer ---------- */
+.colophon{background:var(--ink);color:#C9BFA9;padding:52px 0 130px;font-size:.88rem}
+.colophon-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+.colophon .wordmark{color:var(--linen);font-size:1.15rem}
+.colophon nav{display:flex;gap:20px;flex-wrap:wrap}
+.colophon nav a{text-decoration:none;color:#C9BFA9}
+.colophon nav a:hover{color:var(--honey)}
+.colophon .fin{width:100%;margin-top:30px;padding-top:22px;border-top:1px solid rgba(251,246,236,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem}
+.colophon .fin .tail{font-family:var(--serif);font-style:italic;color:var(--honey)}
+@media(min-width:768px){.colophon{padding-bottom:52px}}
+/* ---------- mobile bar ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;background:var(--ink);box-shadow:0 -8px 26px rgba(44,38,29,.28)}
+.mbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:17px 10px;min-height:44px}
+.mbar .m-call{color:var(--linen);border-right:1px solid rgba(251,246,236,.18)}
+.mbar .m-cta{background:var(--honey);color:var(--ink)}
+@media(min-width:768px){.mbar{display:none}}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--honey-deep);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="#top" aria-label="HarborLight Home Care — home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="#D99A2B" stroke-width="1.5"/><path d="M12 5.5v4M12 9.5c-2.6 0-4.6 2-4.6 4.5S9.4 18.5 12 18.5s4.6-2 4.6-4.5" stroke="#2C261D" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="14" r="1.6" fill="#D99A2B"/></svg>
+      HarborLight
+    </a>
+    <nav class="mast-links" aria-label="Chapters">
+      <a href="#ch1">Ch. I</a><a href="#ch2">Ch. II</a><a href="#ch3">Ch. III</a><a href="#services">Services</a><a href="#how">The Path</a><a href="#faq">Questions</a>
+    </nav>
+    <a class="mast-call" href="tel:+18605550100">(860) 555-0100</a>
+  </div>
+</header>
+
+<!-- ============ PROGRESS SPINE ============ -->
+<div class="spine" aria-hidden="true">
+  <div class="spine-fill" id="spineFill"></div>
+  <span class="spine-dot" style="top:8%" data-target="top"></span>
+  <span class="spine-dot" style="top:26%" data-target="ch1"></span>
+  <span class="spine-dot" style="top:44%" data-target="ch2"></span>
+  <span class="spine-dot" style="top:62%" data-target="ch3"></span>
+  <span class="spine-dot" style="top:80%" data-target="how"></span>
+  <span class="spine-dot" style="top:95%" data-target="begin"></span>
+</div>
+
+<main id="top">
+<!-- ============ 1 · PROLOGUE ============ -->
+<section class="prologue" aria-label="Prologue">
+  <div class="container">
+    <div class="prologue-card">
+      <span class="kicker">Prologue · Oakville, Connecticut</span>
+      <h1 class="slide-l">Every good day at home<br>is a <em class="hl">story worth keeping.</em></h1>
+      <p class="lede fade-u">What follows is one illustrative day with a HarborLight caregiver — told the way our families live it. The names are placeholders; the care is exactly what we do.</p>
+      <div class="prologue-actions fade-u">
+        <a class="btn-story" href="#begin">Begin with a free visit</a>
+        <a class="btn-quiet" href="#ch1">Read the day ↓</a>
+      </div>
+      <div class="badge-row fade-u">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Licensed · Insured · Bonded</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg> Background-checked caregivers</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Hours to 24/7, your choice</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · CHAPTER ONE ============ -->
+<section id="ch1" aria-label="Chapter one — the morning visit">
+  <div class="chapter-head">
+    <span class="numeral" aria-hidden="true">I</span>
+    <span class="kicker">Chapter One</span>
+    <h2 class="slide-l">The Morning Visit</h2>
+    <div class="rulewrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M5 12h14" opacity="0"/><path d="M12 4c1.8 3.2 4.8 6.2 8 8-3.2 1.8-6.2 4.8-8 8-1.8-3.2-4.8-6.2-8-8 3.2-1.8 6.2-4.8 8-8Z"/></svg></div>
+  </div>
+  <div class="scene">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1758874960868-eebf9d36d5d5?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="A senior woman at her kitchen table in soft morning light"></div>
+    <div class="scene-caption">
+      <span class="time">7:52 AM · The kitchen table</span>
+      <p class="slide-r">“Margaret hears the gentle knock she’s come to expect. Dana lets herself in, puts the kettle on, and the day begins the way Margaret likes it — unhurried.”</p>
+    </div>
+  </div>
+  <div class="interlude narrow">
+    <p class="drop">Morning is where home care earns its keep. A steady hand at the shower rail, hair brushed the familiar way, a real breakfast instead of a granola bar eaten standing up. Dana lays out the day’s medications and checks them off — right dose, right time — while Margaret reads the paper aloud, because Dana genuinely wants to hear the town news.</p>
+    <p>By nine, the kitchen is tidy, laundry is humming, and Margaret has already texted her daughter a photo of the crossword. Nobody rushed. Nobody hovered. That is the whole trick.</p>
+    <div class="fact fade-u"><b>Behind this scene</b> Personal Care · Medication Reminders · Homemaking &amp; Meals — three of our eight services, woven into one calm morning by one familiar caregiver.</div>
+  </div>
+</section>
+
+<!-- ============ 3 · CHAPTER TWO ============ -->
+<section id="ch2" aria-label="Chapter two — the afternoon out">
+  <div class="chapter-head">
+    <span class="numeral" aria-hidden="true">II</span>
+    <span class="kicker">Chapter Two</span>
+    <h2 class="slide-r">The Afternoon, Out in the World</h2>
+    <div class="rulewrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4c1.8 3.2 4.8 6.2 8 8-3.2 1.8-6.2 4.8-8 8-1.8-3.2-4.8-6.2-8-8 3.2-1.8 6.2-4.8 8-8Z"/></svg></div>
+  </div>
+  <div class="scene">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1554331292-735256644d5f?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Two people walking together along a tree-lined pathway"></div>
+    <div class="scene-caption">
+      <span class="time">1:15 PM · The pharmacy, then the long way home</span>
+      <p class="slide-l">“The errands take forty minutes. They take the scenic route anyway, because the maples on Buckingham Street are turning, and some things shouldn’t be hurried past.”</p>
+    </div>
+  </div>
+  <div class="interlude narrow">
+    <p class="drop">Afternoons are for the world outside. A ride to the cardiologist with someone who walks in too, takes notes, and remembers the follow-up date. Groceries chosen, not just delivered. A stop at the library. Transportation with company is a different thing entirely from a ride-share — it is an outing.</p>
+    <p>And on the days Margaret would rather stay in? Cards, knitting, old photographs, a shared stubbornness about the crossword. Companionship is a service on our list, but in practice it just looks like friendship with excellent timing.</p>
+    <div class="fact fade-u"><b>Behind this scene</b> Transportation &amp; Errands · Companionship — door-through-door, never drop-off-and-wave.</div>
+  </div>
+</section>
+
+<!-- ============ 4 · CHAPTER THREE ============ -->
+<section id="ch3" aria-label="Chapter three — the evening handoff">
+  <div class="chapter-head">
+    <span class="numeral" aria-hidden="true">III</span>
+    <span class="kicker">Chapter Three</span>
+    <h2 class="slide-l">The Evening Handoff</h2>
+    <div class="rulewrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4c1.8 3.2 4.8 6.2 8 8-3.2 1.8-6.2 4.8-8 8-1.8-3.2-4.8-6.2-8-8 3.2-1.8 6.2-4.8 8-8Z"/></svg></div>
+  </div>
+  <div class="scene">
+    <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1576560665905-28b4d4ea3380?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="A caregiver holding a senior woman's hands as she sits in her chair"></div>
+    <div class="scene-caption">
+      <span class="time">6:40 PM · The good chair by the window</span>
+      <p class="slide-r">“Dana’s note to the family lands at 6:41: ate well, walked the block, in fine spirits. Margaret’s daughter reads it at her own dinner table — and, for the first time in months, just eats.”</p>
+    </div>
+  </div>
+  <div class="interlude narrow">
+    <p class="drop">Every story needs someone keeping watch on the whole of it. At HarborLight that is your care coordinator — one point of contact who supervises visits, adjusts the plan, and sends the family updates that let everyone else simply be family again. When Margaret’s daughter takes her respite weekend, she goes without guilt, because the handoff is seamless.</p>
+    <p>Some families need this chapter to run all night — overnight shifts or full live-in care, staffed so someone attentive is always awake. Others, recovering after a hospital stay, need it intensely for six weeks and lightly ever after. The story flexes. The standard doesn’t.</p>
+    <div class="fact fade-u"><b>Behind this scene</b> Respite for Family Caregivers · 24-Hour &amp; Live-In Care · Recovery &amp; Post-Hospital Support · ongoing supervision with family updates.</div>
+  </div>
+</section>
+
+<!-- ============ 5 · SERVICES INDEX ============ -->
+<section id="services" class="toc" aria-label="All services">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="kicker">The Index</span>
+      <h2 class="fade-u" style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-top:12px">Every chapter we can write with you</h2>
+      <p style="color:var(--ink-soft);max-width:52ch;margin:16px auto 0">Eight services, offered à la carte or woven together — from a few hours a week to round-the-clock care.</p>
+    </div>
+    <div class="toc-list">
+      <div class="toc-item fade-u"><span class="n">i.</span><div><h3>Personal Care</h3><p>Bathing, grooming, dressing and mobility support, delivered with unhurried dignity.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">ii.</span><div><h3>Companionship</h3><p>Conversation, games, walks and shared pastimes — company that feels chosen, not assigned.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">iii.</span><div><h3>Homemaking &amp; Meals</h3><p>Light housekeeping, laundry, and cooking that tastes like home because it’s made there.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">iv.</span><div><h3>Medication Reminders</h3><p>Gentle, reliable prompts that keep every dose on schedule — and families informed.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">v.</span><div><h3>Respite for Family Caregivers</h3><p>Planned relief — an afternoon, a weekend, or a standing break — so you can rest and return.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">vi.</span><div><h3>Transportation &amp; Errands</h3><p>Appointments, pharmacy, groceries — with an escort through the door, not just to the curb.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">vii.</span><div><h3>24-Hour &amp; Live-In Care</h3><p>Awake, attentive coverage through the night, or full live-in support in careful shifts.</p></div></div>
+      <div class="toc-item fade-u"><span class="n">viii.</span><div><h3>Recovery &amp; Post-Hospital Support</h3><p>Discharge instructions followed to the letter, so healing at home stays on course.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · THE PATH (timeline) ============ -->
+<section id="how" class="timeline" aria-label="How care begins">
+  <div class="container" style="text-align:center">
+    <span class="kicker">The Path</span>
+    <h2 class="fade-u" style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-top:12px">How your family’s story begins</h2>
+  </div>
+  <div class="tl-track">
+    <div class="tl-step fade-u"><span class="when">First — at no cost</span><h3>A free in-home assessment</h3><p>We sit at your kitchen table, listen more than we talk, and learn the routines, preferences and safety details that matter.</p></div>
+    <div class="tl-step fade-u"><span class="when">Within days</span><h3>A personalized care plan</h3><p>Everything in writing — schedule, services, goals — for you to read, question, and approve before care begins.</p></div>
+    <div class="tl-step fade-u"><span class="when">Before the first shift</span><h3>A carefully matched caregiver</h3><p>Matched on skills and temperament, then introduced in person. If the chemistry isn’t right, we re-match — simple as that.</p></div>
+    <div class="tl-step fade-u"><span class="when">Ever after</span><h3>Supervision &amp; family updates</h3><p>Ongoing oversight, quality visits, and regular updates from one point of contact, so the whole family stays in the story.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:52px"><a class="btn-story" href="#begin">Schedule the first visit</a></div>
+</section>
+
+<!-- ============ 7 · EPILOGUE FACTS ============ -->
+<section class="epilogue" aria-label="The practical facts">
+  <div class="container">
+    <span class="kicker">Epilogue</span>
+    <h2 class="fade-u" style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-top:12px">The practical facts, plainly told</h2>
+    <div class="ep-grid">
+      <div class="ep-cell fade-u"><span class="big">Local, truly.</span><p>HarborLight is a new, locally-owned agency based in Oakville, CT — serving Oakville, Watertown, Waterbury and Litchfield County with short drives and familiar faces.</p></div>
+      <div class="ep-cell fade-u"><span class="big">Vetted, thoroughly.</span><p>Licensed, insured and bonded, with background-checked caregivers who work under continuous supervision — never left to figure it out alone.</p></div>
+      <div class="ep-cell fade-u"><span class="big">Flexible, honestly.</span><p>From a few hours a week to 24/7 live-in care, with one point of contact and a plan that changes the day your needs do.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · MARGINALIA (testimonials) ============ -->
+<section class="quotes" aria-label="What families say">
+  <div class="container" style="text-align:center;margin-bottom:56px">
+    <span class="kicker">Marginalia</span>
+    <h2 class="fade-u" style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-top:12px">Notes from other families’ chapters</h2>
+  </div>
+  <div class="quote-block fade-u">
+    <span class="qmark" aria-hidden="true">“</span>
+    <blockquote>The evening note became the best part of my day. I stopped calling to check on Mom and started calling just to chat.</blockquote>
+    <cite>— Daughter of a client, Watertown · (sample)</cite>
+  </div>
+  <div class="quote-block fade-u">
+    <span class="qmark" aria-hidden="true">“</span>
+    <blockquote>They matched Dad with a caregiver who loves the Red Sox and hates losing at cribbage. He thinks he hired a friend.</blockquote>
+    <cite>— Son of a client, Oakville · (sample)</cite>
+  </div>
+  <div class="quote-block fade-u">
+    <span class="qmark" aria-hidden="true">“</span>
+    <blockquote>After my wife’s surgery, they followed every discharge instruction and caught a problem we’d never have noticed. That is worth everything.</blockquote>
+    <cite>— Husband of a client, Waterbury · (sample)</cite>
+  </div>
+</section>
+
+<!-- ============ 9 · FAQ ============ -->
+<section id="faq" class="faq-sec" aria-label="Questions, answered">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="kicker">Appendix</span>
+      <h2 class="fade-u" style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-top:12px">Questions, answered before you ask</h2>
+    </div>
+    <details class="faq-item">
+      <summary><h3>What will care cost — and can insurance carry part of it?</h3><span class="m" aria-hidden="true">❧</span></summary>
+      <div class="a">Cost follows hours and level of care, and we put an exact figure on it after your free assessment — in writing, with nothing hidden in footnotes. Many long-term care insurance policies cover in-home care like ours; we’ll gladly review your policy with you and help with the claims paperwork.</div>
+    </details>
+    <details class="faq-item">
+      <summary><h3>Who exactly will be walking through the door?</h3><span class="m" aria-hidden="true">❧</span></summary>
+      <div class="a">A caregiver who has passed a full background check, reference verification, and face-to-face interviews — then been matched to your family on skills and personality, and introduced to you in person before the first shift. We are licensed, insured and bonded, and every caregiver works under ongoing supervision.</div>
+    </details>
+    <details class="faq-item">
+      <summary><h3>What if our needs change mid-story?</h3><span class="m" aria-hidden="true">❧</span></summary>
+      <div class="a">Then the plan changes with them. Scale from a few hours a week to daily visits, overnights, or full 24/7 live-in care — or scale back down as recovery progresses. One call to your care coordinator rewrites the schedule.</div>
+    </details>
+    <details class="faq-item">
+      <summary><h3>How far does HarborLight travel?</h3><span class="m" aria-hidden="true">❧</span></summary>
+      <div class="a">We serve Oakville, Watertown, Waterbury, and communities across Litchfield County, Connecticut. If you’re on the edge of the map, call us — we’d rather tell you honestly than stretch ourselves thin.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 10 · BEGIN (contact) ============ -->
+<section id="begin" class="begin" aria-label="Begin your chapter">
+  <div class="container">
+    <div class="begin-grid">
+      <div class="begin-copy">
+        <span class="kicker">Your Chapter One</span>
+        <h2 class="slide-l">Every story here starts with a free visit and a pot of coffee.</h2>
+        <p>Tell us a little about your family below, or simply call. We’ll come to you, listen well, and leave you with a clear plan — whether or not you choose us to carry it out.</p>
+        <div class="contact-lines">
+          <div class="cl"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <b>(860) 555-0100</b>&nbsp;— a person answers</div>
+          <div class="cl"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Oakville, CT — serving Watertown, Waterbury &amp; Litchfield County</div>
+          <div class="cl"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> Licensed · Insured · Bonded</div>
+        </div>
+      </div>
+      <form class="sform fade-u" name="harborlight-storybook" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="harborlight-storybook">
+        <h3>Request your free in-home assessment</h3>
+        <div class="sf-two">
+          <div class="sf-field"><label for="s-name">Name</label><input id="s-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="sf-field"><label for="s-phone">Phone</label><input id="s-phone" name="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="sf-field"><label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="sf-field"><label for="s-svc">The kind of care you’re considering</label>
+          <select id="s-svc" name="service" required>
+            <option value="" selected disabled>Turn to a page…</option>
+            <option>Personal Care</option><option>Companionship</option><option>Homemaking &amp; Meals</option><option>Medication Reminders</option><option>Respite for Family Caregivers</option><option>Transportation &amp; Errands</option><option>24-Hour &amp; Live-In Care</option><option>Recovery &amp; Post-Hospital Support</option><option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="sf-field"><label for="s-msg">Your family’s situation, in your own words</label><textarea id="s-msg" name="message"></textarea></div>
+        <button class="btn-story" type="submit" style="width:100%">Send &amp; schedule my visit</button>
+        <p class="note">No obligation, no pressure — we reply within one business day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ COLOPHON ============ -->
+<footer class="colophon">
+  <div class="container colophon-inner">
+    <a class="wordmark" href="#top">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="#D99A2B" stroke-width="1.5"/><path d="M12 5.5v4M12 9.5c-2.6 0-4.6 2-4.6 4.5S9.4 18.5 12 18.5s4.6-2 4.6-4.5" stroke="#FBF6EC" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="14" r="1.6" fill="#D99A2B"/></svg>
+      HarborLight Home Care
+    </a>
+    <nav aria-label="Footer"><a href="#ch1">The Day</a><a href="#services">Services</a><a href="#how">The Path</a><a href="#faq">Questions</a><a href="tel:+18605550100">(860) 555-0100</a></nav>
+    <div class="fin">
+      <span>© 2026 HarborLight Home Care · Licensed · Insured · Bonded · Oakville, CT</span>
+      <span class="tail">— fin. (until your chapter begins)</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE BAR ============ -->
+<div class="mbar" role="navigation" aria-label="Quick actions">
+  <a class="m-call" href="tel:+18605550100" aria-label="Call HarborLight at (860) 555-0100"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> Call</a>
+  <a class="m-cta" href="#begin">Free assessment</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Progress spine — plain JS, works without GSAP */
+  var fill = document.getElementById('spineFill');
+  var dots = document.querySelectorAll('.spine-dot');
+  function onScroll(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    if (fill) fill.style.height = (p * 100) + '%';
+    dots.forEach(function(d){
+      var top = parseFloat(d.style.top);
+      d.classList.toggle('lit', p * 100 >= top - 2);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Chapter titles slide from margins — GSAP-gated, visible fallback */
+  if (window.gsap && window.ScrollTrigger && !reduced){
+    document.body.classList.add('anim');
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.slide-l').forEach(function(el){
+      gsap.to(el,{opacity:1,x:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+    });
+    document.querySelectorAll('.slide-r').forEach(function(el){
+      gsap.to(el,{opacity:1,x:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+    });
+    ScrollTrigger.batch('.fade-u',{
+      start:'top 90%',
+      onEnter:function(batch){ gsap.to(batch,{opacity:1,y:0,duration:.75,ease:'power2.out',stagger:.1}); }
+    });
+    setTimeout(function(){
+      document.querySelectorAll('.slide-l,.slide-r,.fade-u').forEach(function(el){
+        if(getComputedStyle(el).opacity === '0'){ el.style.opacity=1; el.style.transform='none'; }
+      });
+    }, 3000);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Theme: "Ink & Ivory" — gallery-grade luxury minimalism. Near-black ink on ivory, no third color. Cormorant (large, light) + Jost small caps. Museum-plaque labels, exhibition numbering, dramatic negative space, full-bleed b/w photo moments with long captions, ultra-thin rules, centered axis broken by an off-grid image. Motion: slow 500ms dissolves, letter-spacing ease on headings. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HarborLight Home Care — Compassionate In-Home Care in Oakville, CT</title>
+<meta name="description" content="HarborLight Home Care. Considered, unhurried in-home care for Oakville, Watertown, Waterbury and Litchfield County, Connecticut. (860) 555-0100.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#f5f2ea; --ivory2:#efebe0; --ink:#181511; --ink-soft:#37332c; --mid:#5d5850;
+  --rule:rgba(24,21,17,.16); --rule-dark:rgba(245,242,234,.22);
+  --t:500ms cubic-bezier(.25,.1,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Cormorant',Georgia,serif;font-size:18px;line-height:1.7;font-weight:400;
+  color:var(--ink);background:var(--ivory);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--ink);color:var(--ivory)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
+  outline:1.5px solid var(--ink);outline-offset:4px;
+}
+.caps{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.24em;font-size:12px}
+.caps-sm{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.2em;font-size:10.5px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:640px;margin:0 auto;padding:0 24px}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:0}
+/* museum plaque */
+.plaque{
+  display:inline-block;border:1px solid var(--rule);padding:10px 22px;text-align:center;
+  font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.26em;font-size:11px;color:var(--ink-soft);
+  background:var(--ivory);
+}
+.plaque .no{display:block;font-size:9.5px;letter-spacing:.3em;color:var(--mid);margin-bottom:4px}
+/* headings — letter-spacing ease on reveal */
+h1,h2{font-weight:300;letter-spacing:.01em}
+.js .ls{letter-spacing:.07em;opacity:0;transition:letter-spacing 900ms cubic-bezier(.25,.1,.25,1),opacity 900ms cubic-bezier(.25,.1,.25,1)}
+.js .ls.in{letter-spacing:.01em;opacity:1}
+.js .dissolve{opacity:0;transition:opacity var(--t)}
+.js .dissolve.in{opacity:1}
+.js .dissolve.d1{transition-delay:150ms}.js .dissolve.d2{transition-delay:300ms}.js .dissolve.d3{transition-delay:450ms}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .js .ls,.js .dissolve{opacity:1;letter-spacing:.01em}
+}
+/* ---------- masthead ---------- */
+.mast{padding:26px 0 0;text-align:center}
+.mast .upper{display:flex;justify-content:space-between;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px 20px}
+.mast .upper span,.mast .upper a{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.mast .upper a:hover{color:var(--ink)}
+.wordmark{display:inline-block;text-decoration:none;color:var(--ink);padding:26px 0 22px}
+.wordmark .mk{display:block;margin:0 auto 14px;width:30px;height:30px}
+.wordmark b{font-family:'Jost',sans-serif;font-weight:400;font-size:clamp(22px,3vw,30px);letter-spacing:.42em;text-transform:uppercase;padding-left:.42em}
+.wordmark small{display:block;margin-top:8px;font-family:'Jost',sans-serif;font-weight:300;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mid)}
+nav.gallery{
+  position:sticky;top:0;z-index:60;background:rgba(245,242,234,.95);backdrop-filter:blur(6px);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+nav.gallery ul{list-style:none;display:flex;justify-content:center;gap:clamp(18px,4vw,56px);padding:16px 24px}
+nav.gallery a{
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;position:relative;padding:4px 0;
+}
+nav.gallery a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--ink);transition:left var(--t),right var(--t)}
+nav.gallery a:hover{color:var(--ink)}
+nav.gallery a:hover::after{left:0;right:0}
+@media(max-width:600px){nav.gallery ul{gap:16px;flex-wrap:wrap;padding:14px 16px}.mast .upper span.loc{display:none}}
+/* buttons — engraved smallcaps */
+.btn{
+  display:inline-block;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;
+  font-family:'Jost',sans-serif;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;
+  padding:16px 36px;min-height:44px;transition:background var(--t),color var(--t);
+}
+.btn:hover{background:var(--ink);color:var(--ivory)}
+.btn.inv{border-color:var(--ivory);color:var(--ivory)}
+.btn.inv:hover{background:var(--ivory);color:var(--ink)}
+.textlink{
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
+  text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:6px;transition:border-color var(--t);
+}
+.textlink:hover{border-color:var(--ink)}
+/* ---------- hero ---------- */
+.hero{text-align:center;padding:clamp(72px,10vw,128px) 24px clamp(64px,8vw,104px)}
+.hero .plaque{margin-bottom:40px}
+.hero h1{font-size:clamp(42px,6.4vw,82px);line-height:1.12;max-width:16ch;margin:0 auto}
+.hero h1 em{font-style:italic;font-weight:300}
+.hero .lede{max-width:52ch;margin:32px auto 0;font-size:20px;color:var(--ink-soft);font-weight:400}
+.hero .ctas{margin-top:48px;display:flex;gap:28px;justify-content:center;align-items:center;flex-wrap:wrap}
+.hero .tel{display:block;margin-top:36px}
+.hero .tel a{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.hero .tel a:hover{color:var(--ink)}
+/* ---------- full-bleed photo moment ---------- */
+.plate{position:relative}
+.plate .photo{
+  height:clamp(360px,60vh,560px);background:#8a857c url('https://images.unsplash.com/photo-1508963493744-76fce69379c0?auto=format&fit=crop&w=1600&q=80') center 40%/cover no-repeat;
+  filter:grayscale(1) contrast(1.02) brightness(1.02);
+}
+.plate .tint{position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,21,17,.34),rgba(24,21,17,.06) 45%);pointer-events:none}
+.plate .caption{
+  max-width:620px;margin:0 auto;padding:28px 24px 0;text-align:center;
+}
+.plate .caption .caps-sm{color:var(--mid);display:block;margin-bottom:10px}
+.plate .caption p{font-style:italic;font-size:17px;color:var(--ink-soft);line-height:1.8}
+/* ---------- section scaffold ---------- */
+section.ex{padding:clamp(72px,9vw,120px) 0}
+.ex-head{text-align:center;margin-bottom:clamp(40px,6vw,72px)}
+.ex-head .plaque{margin-bottom:32px}
+.ex-head h2{font-size:clamp(32px,4.4vw,54px);line-height:1.15;max-width:20ch;margin:0 auto}
+.ex-head .intro{max-width:54ch;margin:24px auto 0;color:var(--ink-soft);font-size:18.5px}
+/* ---------- catalogue (services) ---------- */
+.catalogue{border-top:1px solid var(--rule)}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;border-left:1px solid var(--rule)}
+.cat-item{
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:clamp(28px,4vw,44px);transition:background var(--t);
+}
+.cat-item:nth-child(-n+2){border-top:1px solid var(--rule)}
+.cat-item:hover{background:var(--ivory2)}
+.cat-item .no{font-family:'Jost',sans-serif;font-weight:300;font-size:11px;letter-spacing:.3em;color:var(--mid);display:block;margin-bottom:14px}
+.cat-item h3{font-weight:400;font-size:26px;line-height:1.25;margin-bottom:10px}
+.cat-item p{font-size:16px;color:var(--ink-soft);max-width:38ch}
+@media(max-width:767px){.cat-grid{grid-template-columns:1fr}.cat-item:nth-child(-n+2){border-top:none}.cat-item:first-child{border-top:1px solid var(--rule)}}
+/* ---------- off-grid interlude ---------- */
+.interlude{position:relative;padding:clamp(64px,9vw,120px) 0;overflow:hidden}
+.interlude .grid{display:grid;grid-template-columns:7fr 5fr;gap:0;align-items:center;max-width:1180px;margin:0 auto;padding:0 24px}
+.interlude .img{
+  height:clamp(320px,48vw,520px);margin-left:calc(-1 * clamp(24px,6vw,96px));
+  background:#8a857c url('https://images.unsplash.com/photo-1554331292-735256644d5f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  filter:grayscale(1) contrast(1.03);
+}
+.interlude .panel{background:var(--ivory);border:1px solid var(--rule);padding:clamp(32px,4vw,56px);margin-left:-64px;position:relative;z-index:1}
+.interlude .panel .caps-sm{color:var(--mid);display:block;margin-bottom:18px}
+.interlude .panel h2{font-size:clamp(28px,3.4vw,40px);line-height:1.2;margin-bottom:18px}
+.interlude .panel p{color:var(--ink-soft);font-size:17px}
+.interlude .panel p+p{margin-top:14px}
+.interlude .panel .textlink{display:inline-block;margin-top:28px}
+@media(max-width:900px){
+  .interlude .grid{grid-template-columns:1fr}
+  .interlude .img{margin:0 -24px;height:300px}
+  .interlude .panel{margin:-48px 12px 0;padding:32px 24px}
+}
+/* ---------- method ---------- */
+.method-list{max-width:680px;margin:0 auto;border-top:1px solid var(--rule)}
+.method{display:grid;grid-template-columns:96px 1fr;gap:28px;padding:clamp(32px,4vw,48px) 0;border-bottom:1px solid var(--rule)}
+.method .rn{font-weight:300;font-size:clamp(38px,4.5vw,52px);line-height:1;color:var(--ink);font-style:italic;text-align:right}
+.method h3{font-weight:400;font-size:24px;margin-bottom:8px}
+.method p{color:var(--ink-soft);font-size:16.5px;max-width:46ch}
+.method .caps-sm{color:var(--mid);display:block;margin-top:12px}
+@media(max-width:600px){.method{grid-template-columns:56px 1fr;gap:18px}.method .rn{font-size:32px}}
+/* ---------- testimony ---------- */
+.testimony{background:var(--ink);color:var(--ivory)}
+.testimony .plaque{background:transparent;border-color:var(--rule-dark);color:var(--ivory)}
+.testimony .plaque .no{color:rgba(245,242,234,.6)}
+.t-quote{max-width:760px;margin:0 auto;text-align:center;padding:0 24px}
+.t-quote blockquote p{font-size:clamp(24px,3.4vw,36px);line-height:1.45;font-weight:300;font-style:italic}
+.t-quote figcaption{margin-top:28px}
+.t-quote figcaption .caps-sm{color:rgba(245,242,234,.65);letter-spacing:.26em}
+.t-rule{width:56px;height:1px;background:var(--rule-dark);margin:48px auto}
+.t-quote.small blockquote p{font-size:clamp(19px,2.2vw,24px)}
+/* ---------- portrait plate ---------- */
+.portrait-plate{text-align:center}
+.pp-frame{
+  display:inline-block;border:1px solid var(--rule);padding:clamp(14px,2vw,22px);background:var(--ivory);
+}
+.pp-img{
+  width:min(420px,78vw);height:min(520px,96vw);
+  background:#8a857c url('https://images.unsplash.com/photo-1566616213894-2d4e1baee5d8?auto=format&fit=crop&w=1600&q=80') center 25%/cover no-repeat;
+  filter:grayscale(1) contrast(1.04);
+}
+/* ---------- provenance ---------- */
+.prov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);max-width:920px;margin:0 auto}
+.prov{padding:clamp(32px,4vw,48px) 28px;text-align:center;border-right:1px solid var(--rule)}
+.prov:last-child{border-right:none}
+.prov svg{width:30px;height:30px;stroke:var(--ink);stroke-width:1;margin-bottom:20px}
+.prov h3{font-family:'Jost',sans-serif;font-weight:400;font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:12px}
+.prov p{font-size:15.5px;color:var(--ink-soft)}
+.prov-note{text-align:center;max-width:56ch;margin:40px auto 0;padding:0 24px;color:var(--ink-soft);font-size:17px;font-style:italic}
+@media(max-width:767px){.prov-grid{grid-template-columns:1fr}.prov{border-right:none;border-bottom:1px solid var(--rule)}.prov:last-child{border-bottom:none}}
+/* ---------- questions ---------- */
+.q-list{max-width:720px;margin:0 auto;border-top:1px solid var(--rule)}
+.q-list details{border-bottom:1px solid var(--rule)}
+.q-list summary{
+  list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:24px;
+  padding:28px 8px;min-height:44px;
+}
+.q-list summary::-webkit-details-marker{display:none}
+.q-list summary .qn{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.26em;color:var(--mid);flex:none;width:34px}
+.q-list summary h3{font-weight:400;font-size:22px;line-height:1.35;flex:1}
+.q-list summary .ind{
+  font-family:'Jost',sans-serif;font-weight:300;font-size:20px;color:var(--mid);flex:none;
+  transition:transform var(--t);line-height:1;
+}
+.q-list details[open] summary .ind{transform:rotate(45deg)}
+.q-list .ans{padding:0 8px 32px 58px;color:var(--ink-soft);font-size:16.5px;max-width:58ch}
+@media(max-width:600px){.q-list summary{gap:14px}.q-list .ans{padding-left:8px}}
+/* ---------- correspondence ---------- */
+.corr{border-top:1px solid var(--rule)}
+.corr-form{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:36px 32px}
+.cf{display:flex;flex-direction:column;gap:10px}
+.cf.full{grid-column:1/-1}
+.cf label{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mid)}
+.cf input,.cf select,.cf textarea{
+  font-family:'Cormorant',Georgia,serif;font-size:19px;color:var(--ink);background:transparent;
+  border:none;border-bottom:1px solid var(--rule);border-radius:0;padding:8px 2px 12px;min-height:44px;width:100%;
+  transition:border-color var(--t);
+}
+.cf textarea{min-height:96px;resize:vertical}
+.cf input:focus,.cf select:focus,.cf textarea:focus{border-bottom-color:var(--ink);outline:none}
+.corr-form .btn{grid-column:1/-1;justify-self:center;margin-top:12px}
+.corr-form .fine{grid-column:1/-1;text-align:center;font-size:14.5px;color:var(--mid);font-style:italic}
+.corr-aside{text-align:center;margin-top:56px}
+.corr-aside .caps-sm{color:var(--mid);display:block;margin-bottom:12px}
+.corr-aside a{color:var(--ink);text-decoration:none;font-size:22px}
+.corr-aside a:hover{font-style:italic}
+.corr-aside .sep{width:40px;height:1px;background:var(--rule);margin:28px auto}
+@media(max-width:600px){.corr-form{grid-template-columns:1fr;gap:28px}}
+/* ---------- colophon ---------- */
+.colophon{border-top:1px solid var(--rule);background:var(--ivory2)}
+.colophon .epigraph{max-width:620px;margin:0 auto;text-align:center;padding:clamp(56px,7vw,88px) 24px clamp(32px,4vw,48px)}
+.colophon .epigraph p{font-style:italic;font-weight:300;font-size:clamp(22px,2.8vw,30px);line-height:1.5}
+.colophon .epigraph .caps-sm{display:block;margin-top:22px;color:var(--mid)}
+.colophon .particulars{
+  display:grid;grid-template-columns:repeat(3,1fr);max-width:920px;margin:0 auto;
+  border:1px solid var(--rule);border-bottom:none;
+}
+.colophon .part{padding:26px 24px;text-align:center;border-right:1px solid var(--rule)}
+.colophon .part:last-child{border-right:none}
+.colophon .part .caps-sm{display:block;color:var(--mid);margin-bottom:8px}
+.colophon .part p{font-size:16.5px;color:var(--ink-soft)}
+.colophon .part a{color:var(--ink);text-decoration:none}
+.colophon .part a:hover{font-style:italic}
+@media(max-width:767px){.colophon .particulars{grid-template-columns:1fr}.colophon .part{border-right:none;border-bottom:1px solid var(--rule)}.colophon .part:last-child{border-bottom:none}}
+/* ---------- footer ---------- */
+footer.gal{border-top:1px solid var(--rule);text-align:center;padding:64px 24px 48px}
+footer.gal .wordmark{padding:0 0 28px}
+footer.gal .wordmark b{font-size:18px}
+footer.gal ul{list-style:none;display:flex;justify-content:center;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-bottom:36px}
+footer.gal ul a{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+footer.gal ul a:hover{color:var(--ink)}
+footer.gal .legal{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);line-height:2.2}
+/* ---------- mobile bar ---------- */
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;background:var(--ink)}
+.mobile-bar a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ivory);text-decoration:none;
+}
+.mobile-bar a+a{border-left:1px solid var(--rule-dark)}
+.mobile-bar svg{width:15px;height:15px;stroke:var(--ivory);stroke-width:1.4}
+@media(min-width:768px){.mobile-bar{display:none}}
+@media(max-width:767px){body{padding-bottom:56px}}
+</style>
+</head>
+<body>
+
+<!-- masthead -->
+<header class="mast">
+  <div class="upper">
+    <span class="loc">Oakville · Connecticut</span>
+    <span class="caps-sm" style="letter-spacing:.3em">In-Home Care</span>
+    <a href="tel:+18605550100" aria-label="Call HarborLight Home Care">(860) 555-0100</a>
+  </div>
+  <hr class="rule">
+  <a class="wordmark" href="#top" aria-label="HarborLight Home Care home">
+    <svg class="mk" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="16" cy="16" r="14.5" stroke="#181511" stroke-width="1"/>
+      <path d="M16 6v14M11 24h10M16 20l-5 4m5-4l5 4" stroke="#181511" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="16" cy="6" r="1.4" fill="#181511"/>
+    </svg>
+    <b>Harborlight</b>
+    <small>Home Care · Oakville, Connecticut</small>
+  </a>
+</header>
+<nav class="gallery" aria-label="Primary">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#testimony">Testimony</a></li>
+    <li><a href="#provenance">Assurance</a></li>
+    <li><a href="#correspondence">Enquire</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+<!-- hero -->
+<section class="hero" aria-label="Introduction">
+  <span class="plaque dissolve"><span class="no">No. 01</span>An Introduction</span>
+  <h1 class="ls">The quiet art of <em>being cared for</em> at home.</h1>
+  <p class="lede dissolve d1">HarborLight attends to the days of Oakville, Watertown, Waterbury, and Litchfield County — with care that is deliberate, discreet, and entirely at home.</p>
+  <div class="ctas dissolve d2">
+    <a class="btn" href="#correspondence">Request a Private Assessment</a>
+    <a class="textlink" href="#services">View the Services</a>
+  </div>
+  <span class="tel dissolve d3"><a href="tel:+18605550100">Telephone · (860) 555-0100</a></span>
+</section>
+
+<!-- plate I -->
+<figure class="plate" aria-label="Photograph: a couple seated by the water">
+  <div class="photo" role="img" aria-label="A couple seated together on a bench by the sea, photographed in black and white"></div>
+  <div class="tint" aria-hidden="true"></div>
+  <figcaption class="caption dissolve">
+    <span class="caps-sm">Plate I — Companionship, observed</span>
+    <p>Care, done well, is nearly invisible. It looks like an ordinary afternoon: two people, unhurried, exactly where they wish to be. Everything we do is in service of afternoons like this one — kept safely, comfortably, at home.</p>
+  </figcaption>
+</figure>
+
+<!-- II services -->
+<section class="ex catalogue" id="services" aria-label="Services">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="plaque dissolve"><span class="no">No. 02</span>The Services</span>
+      <h2 class="ls">Eight disciplines. One standard.</h2>
+      <p class="intro dissolve d1">Each may be engaged alone, or composed together. Every arrangement is written, supervised, and reported to the family.</p>
+    </div>
+    <div class="cat-grid">
+      <article class="cat-item dissolve"><span class="no">01</span><h3>Personal Care</h3><p>Bathing, grooming, dressing, and safe movement — attended with patience and complete discretion.</p></article>
+      <article class="cat-item dissolve d1"><span class="no">02</span><h3>Companionship</h3><p>Conversation, reading aloud, a walk taken slowly. Presence, offered as a practice.</p></article>
+      <article class="cat-item dissolve"><span class="no">03</span><h3>Homemaking &amp; Meals</h3><p>A kept house and a proper table: light housekeeping, laundry, and meals prepared with care.</p></article>
+      <article class="cat-item dissolve d1"><span class="no">04</span><h3>Medication Reminders</h3><p>Each dose, on its hour. Adherence quietly noted, and quietly reported home.</p></article>
+      <article class="cat-item dissolve"><span class="no">05</span><h3>Respite for Family Caregivers</h3><p>Leave for an afternoon, or a fortnight. The standard of care does not leave with you.</p></article>
+      <article class="cat-item dissolve d1"><span class="no">06</span><h3>Transportation &amp; Errands</h3><p>Appointments, the pharmacy, the market — accompanied door to door, never rushed.</p></article>
+      <article class="cat-item dissolve"><span class="no">07</span><h3>Twenty-Four-Hour &amp; Live-In Care</h3><p>A watchful, gentle presence through the night; continuity by day. Coverage without seams.</p></article>
+      <article class="cat-item dissolve d1"><span class="no">08</span><h3>Recovery &amp; Post-Hospital Support</h3><p>The return home, curated: rest protected, strength rebuilt, the discharge plan honoured.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- off-grid interlude -->
+<section class="interlude" aria-label="About HarborLight">
+  <div class="grid">
+    <div class="img dissolve" role="img" aria-label="A couple walking a garden pathway, in black and white"></div>
+    <div class="panel dissolve d1">
+      <span class="caps-sm">Plate II — The house, kept</span>
+      <h2 class="ls">New, local, and unwilling to cut corners.</h2>
+      <p>HarborLight is a locally owned practice, founded in Oakville and built without inheritance — every procedure written this year, for the families we serve now.</p>
+      <p>We remain deliberately small: one point of contact per family, caregivers matched by hand, schedules from a few hours a week to constant care.</p>
+      <a class="textlink" href="#correspondence">Begin the Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- III method -->
+<section class="ex" id="method" aria-label="The method">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="plaque dissolve"><span class="no">No. 03</span>The Method</span>
+      <h2 class="ls">Four movements, in order.</h2>
+      <p class="intro dissolve d1">Nothing begins until it is understood; nothing continues without being watched over.</p>
+    </div>
+    <div class="method-list">
+      <div class="method dissolve">
+        <span class="rn" aria-hidden="true">I.</span>
+        <div><h3>The Assessment</h3><p>We visit the home, without charge and without obligation, and listen until the picture is complete.</p><span class="caps-sm">Complimentary · In your home</span></div>
+      </div>
+      <div class="method dissolve">
+        <span class="rn" aria-hidden="true">II.</span>
+        <div><h3>The Plan</h3><p>A personalised care plan, set down in writing: what will be done, when, and to what end. Yours to approve.</p><span class="caps-sm">Written · Plainly worded</span></div>
+      </div>
+      <div class="method dissolve">
+        <span class="rn" aria-hidden="true">III.</span>
+        <div><h3>The Match</h3><p>A caregiver chosen for skill and for temperament, background-checked without exception. If the fit is imperfect, we begin again.</p><span class="caps-sm">Vetted · Chosen by hand</span></div>
+      </div>
+      <div class="method dissolve">
+        <span class="rn" aria-hidden="true">IV.</span>
+        <div><h3>The Keeping</h3><p>Supervision continues; the family is kept informed; the plan is revised as life revises itself.</p><span class="caps-sm">Supervised · Reported home</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IV testimony -->
+<section class="ex testimony" id="testimony" aria-label="Testimony">
+  <div class="ex-head">
+    <span class="plaque dissolve"><span class="no">No. 04</span>Testimony</span>
+  </div>
+  <figure class="t-quote dissolve">
+    <blockquote><p>"They restored something I thought we had lost — ordinary days. My mother is home, at ease, and entirely herself."</p></blockquote>
+    <figcaption><span class="caps-sm">— Daughter of a client, Watertown · (sample)</span></figcaption>
+  </figure>
+  <div class="t-rule" aria-hidden="true"></div>
+  <figure class="t-quote small dissolve">
+    <blockquote><p>"One number to call, one person who knows us. After months of phone trees elsewhere, that alone felt like luxury."</p></blockquote>
+    <figcaption><span class="caps-sm">— Son of a client, Waterbury · (sample)</span></figcaption>
+  </figure>
+  <div class="t-rule" aria-hidden="true"></div>
+  <figure class="t-quote small dissolve">
+    <blockquote><p>"The caregiver they chose fits our house the way the furniture does. I no longer remember what we were so worried about."</p></blockquote>
+    <figcaption><span class="caps-sm">— Wife of a client, Litchfield County · (sample)</span></figcaption>
+  </figure>
+</section>
+
+<!-- plate III — portrait -->
+<section class="ex" aria-label="Portrait" style="padding-bottom:0">
+  <figure class="portrait-plate">
+    <div class="pp-frame dissolve">
+      <div class="pp-img" role="img" aria-label="Portrait of a smiling older woman, in black and white"></div>
+    </div>
+    <figcaption class="caption dissolve d1" style="max-width:560px;margin:0 auto;padding:28px 24px 0;text-align:center">
+      <span class="caps-sm" style="color:var(--mid);display:block;margin-bottom:10px">Plate III — The subject of all this</span>
+      <p style="font-style:italic;font-size:17px;color:var(--ink-soft);line-height:1.8">Not a case, not a schedule, not a chart. A person — with a favourite chair, a particular way of taking tea, and a life that deserves to continue on its own terms. Our whole method exists so that it can.</p>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- V provenance -->
+<section class="ex" id="provenance" aria-label="Assurance">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="plaque dissolve"><span class="no">No. 05</span>Provenance &amp; Assurance</span>
+      <h2 class="ls">Credentials, stated plainly.</h2>
+    </div>
+    <div class="prov-grid">
+      <div class="prov dissolve">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Licensed · Insured · Bonded</h3>
+        <p>The formalities are complete before the first visit is ever made.</p>
+      </div>
+      <div class="prov dissolve d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+        <h3>Caregivers, Vetted</h3>
+        <p>Background checks, verified references, and interviews in person. Without exception.</p>
+      </div>
+      <div class="prov dissolve d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <h3>Hours, Yours</h3>
+        <p>From a few hours weekly to constant, live-in care — the schedule follows the need.</p>
+      </div>
+    </div>
+    <p class="prov-note dissolve">Serving Oakville, Watertown, Waterbury, and the towns of Litchfield County, Connecticut.</p>
+  </div>
+</section>
+
+<!-- VI questions -->
+<section class="ex" id="questions" aria-label="Questions" style="padding-top:0">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="plaque dissolve"><span class="no">No. 06</span>Questions, Anticipated</span>
+      <h2 class="ls">Asked before. Answered here.</h2>
+    </div>
+    <div class="q-list">
+      <details class="dissolve">
+        <summary><span class="qn">Q.1</span><h3>What does care cost, and will insurance take part?</h3><span class="ind" aria-hidden="true">+</span></summary>
+        <div class="ans">The fee follows the plan — its hours and its depth — and is quoted in writing after the complimentary assessment. Care of this kind is customarily private pay; many long-term-care insurance policies, however, reimburse it. Bring the policy to our first meeting. We will read it together and prepare whatever documentation a claim requires.</div>
+      </details>
+      <details class="dissolve">
+        <summary><span class="qn">Q.2</span><h3>How are your caregivers chosen?</h3><span class="ind" aria-hidden="true">+</span></summary>
+        <div class="ans">Sparingly. Each candidate passes a background check, reference verification, and an interview conducted in person. Those who join are then matched to a household — by skill first, and by temperament with equal seriousness. A match that does not sit well is remade at a word.</div>
+      </details>
+      <details class="dissolve">
+        <summary><span class="qn">Q.3</span><h3>May the schedule change as circumstances do?</h3><span class="ind" aria-hidden="true">+</span></summary>
+        <div class="ans">It is expected to. Families begin with a few hours a week and extend to overnight, twenty-four-hour, or live-in arrangements as needed — then draw back again when strength returns. One conversation with your coordinator is sufficient.</div>
+      </details>
+      <details class="dissolve">
+        <summary><span class="qn">Q.4</span><h3>Which towns do you attend?</h3><span class="ind" aria-hidden="true">+</span></summary>
+        <div class="ans">Oakville, where we are based; Watertown; Waterbury; and the towns of Litchfield County. If you sit at the edge of that map, telephone us — we accept a household only when we can serve it faithfully, and we will tell you plainly either way.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- VII correspondence -->
+<section class="ex corr" id="correspondence" aria-label="Enquire">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="plaque dissolve"><span class="no">No. 07</span>Correspondence</span>
+      <h2 class="ls">Request a private assessment.</h2>
+      <p class="intro dissolve d1">A note is enough. A coordinator will telephone to arrange a visit at your convenience — complimentary, and without obligation.</p>
+    </div>
+    <form class="corr-form dissolve" name="harborlight-inkivory" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="harborlight-inkivory">
+      <div class="cf"><label for="i-name">Your name</label><input id="i-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="cf"><label for="i-phone">Telephone</label><input id="i-phone" name="phone" type="tel" autocomplete="tel" required></div>
+      <div class="cf full"><label for="i-email">Email</label><input id="i-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="cf full"><label for="i-service">The care in question</label>
+        <select id="i-service" name="service" required>
+          <option value="" selected disabled>Please choose…</option>
+          <option>Personal Care</option>
+          <option>Companionship</option>
+          <option>Homemaking &amp; Meals</option>
+          <option>Medication Reminders</option>
+          <option>Respite for Family Caregivers</option>
+          <option>Transportation &amp; Errands</option>
+          <option>24-Hour &amp; Live-In Care</option>
+          <option>Recovery &amp; Post-Hospital Support</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="cf full"><label for="i-msg">A few lines, if you wish</label><textarea id="i-msg" name="message" placeholder="Who the care is for, the town, and what a good week would hold."></textarea></div>
+      <button class="btn" type="submit">Send the Enquiry</button>
+      <p class="fine">Held in confidence, and answered within one business day.</p>
+    </form>
+    <div class="corr-aside dissolve">
+      <span class="caps-sm">Or simply telephone</span>
+      <a href="tel:+18605550100">(860) 555-0100</a>
+      <div class="sep" aria-hidden="true"></div>
+      <span class="caps-sm">Oakville · Watertown · Waterbury · Litchfield County</span>
+    </div>
+  </div>
+</section>
+<!-- colophon -->
+<section class="colophon" aria-label="Closing note">
+  <div class="epigraph dissolve">
+    <p>"Home is the exhibition that matters. We only see to its keeping."</p>
+    <span class="caps-sm">— HarborLight Home Care, Oakville</span>
+  </div>
+  <div class="particulars dissolve d1">
+    <div class="part"><span class="caps-sm">Areas attended</span><p>Oakville · Watertown · Waterbury · Litchfield County</p></div>
+    <div class="part"><span class="caps-sm">Hours kept</span><p>A few hours weekly, to twenty-four-hour &amp; live-in</p></div>
+    <div class="part"><span class="caps-sm">By telephone</span><p><a href="tel:+18605550100">(860) 555-0100</a></p></div>
+  </div>
+</section>
+</main>
+
+<!-- footer -->
+<footer class="gal">
+  <a class="wordmark" href="#top" aria-label="HarborLight Home Care home">
+    <svg class="mk" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="16" cy="16" r="14.5" stroke="#181511" stroke-width="1"/>
+      <path d="M16 6v14M11 24h10M16 20l-5 4m5-4l5 4" stroke="#181511" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="16" cy="6" r="1.4" fill="#181511"/>
+    </svg>
+    <b>Harborlight</b>
+  </a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#testimony">Testimony</a></li>
+    <li><a href="#questions">Questions</a></li>
+    <li><a href="#correspondence">Enquire</a></li>
+  </ul>
+  <p class="legal">© 2026 HarborLight Home Care · Licensed · Insured · Bonded<br>Placeholder site — sample content for review · (860) 555-0100</p>
+</footer>
+
+<!-- mobile bar -->
+<div class="mobile-bar" role="navigation" aria-label="Quick actions">
+  <a href="tel:+18605550100"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M5 4h4l2 5-3 2c1 2.5 3 4.5 5.5 5.5l2-3 5 2v4a2 2 0 0 1-2 2C10 21.5 2.5 14 2.5 5.5A2 2 0 0 1 4.5 4z"/></svg>Telephone</a>
+  <a href="#correspondence"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>Enquire</a>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.dissolve, .ls');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -48px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
